@@ -219,6 +219,89 @@ nav a:hover {
     margin: 12px 0;
 }
 
+/* Hero com fundo branco e enxame de partículas */
+
+.hero {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    color: #0b1020;
+}
+
+.hero-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Conteúdo acima do canvas */
+.hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.hero .eyebrow {
+    color: #1d4ed8;
+}
+
+.hero-text {
+    color: #44516b;
+}
+
+.hero .button {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    color: #ffffff;
+}
+
+.hero .button-secondary {
+    background: transparent;
+    color: #1d4ed8;
+}
+
+.hero-card {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: #cfe0ff;
+    backdrop-filter: blur(6px);
+}
+
+.hero-card .card-label {
+    color: #1d4ed8;
+}
+
+.hero-card ul {
+    color: #44516b;
+}
+
+/* Metal líquido nas laterais */
+
+.metal-side {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+}
+
+.metal-left {
+    left: 0;
+    -webkit-mask-image: linear-gradient(to right, #000 45%, transparent 100%);
+    mask-image: linear-gradient(to right, #000 45%, transparent 100%);
+}
+
+.metal-right {
+    right: 0;
+    -webkit-mask-image: linear-gradient(to left, #000 45%, transparent 100%);
+    mask-image: linear-gradient(to left, #000 45%, transparent 100%);
+}
+
+@media (max-width: 850px) {
+    .metal-side {
+        width: 45%;
+        opacity: 0.5;
+    }
+}
+
 /* Habilidades */
 
 .skills-grid {
