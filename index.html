@@ -12,7 +12,11 @@
 
     <title>Gabriel Monteiro Rosa | Portfólio</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cards.css">
     <link rel="icon" type="image/png" href="assets/favicon.png">
 </head>
 
@@ -367,12 +371,13 @@
                     </div>
                 </article>
 
-                <!-- Cursos e certificados -->
-                <h3 class="group-title">Cursos e certificados</h3>
+               <!-- Cursos e certificados -->
+<h3 class="group-title">Cursos e certificados</h3>
 
-                <div class="entry-stack">
-                    <!-- Copie este bloco para adicionar mais cursos -->
-                    <article class="entry">
+<div class="entry-stack">
+                <!-- Copie este bloco para adicionar mais cursos -->
+                <article class="entry entry-cert">
+                    <div class="entry-cert-info">
                         <h4>EF SET English Certificate 78/100 (C2 Proficient)</h4>
 
                         <p class="entry-meta">
@@ -387,13 +392,32 @@
                         >
                             Ver certificado ↗
                         </a>
-                    </article>
+                    </div>
 
-                    <article class="entry">
+                    <div class="cert-preview">
+                        <iframe
+                            src="assets/certificados/certificado-ef-set.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+                            title="Prévia do certificado EF SET English"
+                            loading="lazy"
+                            tabindex="-1"
+                        ></iframe>
+
+                        <a
+                            class="cert-preview-link"
+                            href="assets/certificados/certificado-ef-set.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Abrir certificado EF SET"
+                        ></a>
+                    </div>
+                </article>
+
+                <article class="entry entry-cert">
+                    <div class="entry-cert-info">
                         <h4>Analista de Cibersegurança Júnior</h4>
 
                         <p class="entry-meta">
-                            Cisco - jan. de 2025 
+                            Cisco - jan. de 2025
                         </p>
 
                         <a
@@ -404,13 +428,32 @@
                         >
                             Ver certificado ↗
                         </a>
-                    </article>
-                    
-                    <article class="entry">
+                    </div>
+
+                    <div class="cert-preview">
+                        <iframe
+                            src="assets/certificados/certificado-cisco-cibersec.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+                            title="Prévia do certificado Cisco de Analista de Cibersegurança Júnior"
+                            loading="lazy"
+                            tabindex="-1"
+                        ></iframe>
+
+                        <a
+                            class="cert-preview-link"
+                            href="assets/certificados/certificado-cisco-cibersec.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Abrir certificado Cisco"
+                        ></a>
+                    </div>
+                </article>
+
+                <article class="entry entry-cert">
+                    <div class="entry-cert-info">
                         <h4>Scrum Fundamentals Certified (SFC)</h4>
 
                         <p class="entry-meta">
-                            VMEdu - dez. de 2024 
+                            VMEdu - dez. de 2024
                         </p>
 
                         <a
@@ -421,13 +464,32 @@
                         >
                             Ver certificado ↗
                         </a>
-                    </article>
+                    </div>
 
-                    <article class="entry">
+                    <div class="cert-preview">
+                        <iframe
+                            src="assets/certificados/certificado-sfc.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+                            title="Prévia do certificado Scrum Fundamentals Certified"
+                            loading="lazy"
+                            tabindex="-1"
+                        ></iframe>
+
+                        <a
+                            class="cert-preview-link"
+                            href="assets/certificados/certificado-sfc.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Abrir certificado Scrum Fundamentals Certified"
+                        ></a>
+                    </div>
+                </article>
+
+                <article class="entry entry-cert">
+                    <div class="entry-cert-info">
                         <h4>Elipse E3 Desenvolvedores - Versão 6.8</h4>
 
                         <p class="entry-meta">
-                            Elipse Software - nov. de 2024 
+                            Elipse Software - nov. de 2024
                         </p>
 
                         <a
@@ -438,8 +500,26 @@
                         >
                             Ver certificado ↗
                         </a>
-                    </article>
-                </div>
+                    </div>
+
+                    <div class="cert-preview">
+                        <iframe
+                            src="assets/certificados/certificado-elipse-e3.pdf#toolbar=0&navpanes=0&scrollbar=0&view=Fit"
+                            title="Prévia do certificado Elipse E3 Desenvolvedores"
+                            loading="lazy"
+                            tabindex="-1"
+                        ></iframe>
+
+                        <a
+                            class="cert-preview-link"
+                            href="assets/certificados/certificado-elipse-e3.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Abrir certificado Elipse E3"
+                        ></a>
+                    </div>
+                </article>
+            </div>
 
                 <!-- Publicações científicas -->
                 <h3 class="group-title">Publicações científicas</h3>
@@ -522,5 +602,14 @@
     </footer>
     <script src="paper-shaders.js" defer></script>
     <script src="hero-metal.js" defer></script>
+    <script>
+   document.querySelectorAll(".skill-card, .project-card, .entry, .resume-box").forEach((card) => {
+       card.addEventListener("pointermove", (e) => {
+           const rect = card.getBoundingClientRect();
+           card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+           card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+       });
+   });
+   </script>
 </body>
 </html>

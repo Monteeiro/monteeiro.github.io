@@ -9,6 +9,9 @@
     --accent: #78a9ff;
     --border: #26334d;
     --max-width: 1100px;
+    --font-body: "Inter", Arial, Helvetica, sans-serif;
+    --font-display: "Space Grotesk", "Inter", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 * {
@@ -24,8 +27,22 @@ body {
     margin: 0;
     background: var(--background);
     color: var(--text);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--font-body);
     line-height: 1.6;
+}
+
+h1, h2, h3, h4,
+.logo,
+.project-number {
+    font-family: var(--font-display);
+}
+
+.eyebrow,
+.card-label,
+.project-type,
+.entry-meta,
+.tag-list span {
+    font-family: var(--font-mono);
 }
 
 a {
@@ -51,6 +68,10 @@ h1,
 h2,
 h3 {
     line-height: 1.2;
+}
+
+h1 {
+    letter-spacing: -0.04em;
 }
 
 h2 {
@@ -623,5 +644,58 @@ nav a:hover {
 
     .hero-card {
         padding: 22px;
+    }
+}
+
+/* Cards de certificado com prévia do PDF à direita */
+
+.entry-cert {
+    display: grid;
+    grid-template-columns: 1fr 200px;
+    align-items: center;
+    gap: 24px;
+}
+
+.cert-preview {
+    position: relative;
+    aspect-ratio: 1.414 / 1;      /* A4 horizontal */
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(120, 169, 255, 0.25);
+    border-radius: 8px;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Para certificados na vertical, adicione a classe cert-preview-vertical */
+.cert-preview-vertical {
+    aspect-ratio: 1 / 1.414;
+}
+
+.cert-preview iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    pointer-events: none;   /* o clique vai para o link por cima */
+}
+
+.cert-preview-link {
+    position: absolute;
+    inset: 0;
+}
+
+.cert-preview:hover {
+    transform: translateY(-3px);
+    border-color: rgba(120, 169, 255, 0.6);
+}
+
+@media (max-width: 600px) {
+    .entry-cert {
+        grid-template-columns: 1fr;
+    }
+
+    /* Muitos celulares não exibem PDF em iframe */
+    .cert-preview {
+        display: none;
     }
 }
