@@ -600,6 +600,15 @@
             </p>
         </div>
     </footer>
+
+    <a class="back-to-top" href="#inicio" aria-label="Voltar ao topo">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M3 10.5 12 3l9 7.5"></path>
+            <path d="M5 9.5V20a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V9.5"></path>
+        </svg>
+    </a>
+
     <script src="paper-shaders.js" defer></script>
     <script src="hero-metal.js" defer></script>
     <script>
@@ -611,5 +620,16 @@
        });
    });
    </script>
+   <script>
+    const backToTop = document.querySelector(".back-to-top");
+
+    function toggleBackToTop() {
+        backToTop.classList.toggle("is-visible", window.scrollY > 400);
+    }
+
+    window.addEventListener("scroll", toggleBackToTop, { passive: true });
+    toggleBackToTop();
+    </script>
+
 </body>
 </html>
