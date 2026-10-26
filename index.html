@@ -14,28 +14,61 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <script>document.documentElement.classList.add("js");</script>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="cards.css">
     <link rel="icon" type="image/png" href="assets/favicon.png">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Gabriel Monteiro Rosa">
+    <meta property="og:title" content="Gabriel Monteiro Rosa | Portfólio">
+    <meta property="og:description" content="Portfólio de projetos de engenharia com enfoque em Machine Learning, Visão Computacional, Automação Industrial e Robótica.">
+    <meta property="og:url" content="https://monteeiro.github.io/">
+    <meta property="og:image" content="https://monteeiro.github.io/assets/og-image.png">
+    <link rel="canonical" href="https://monteeiro.github.io/">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Gabriel Monteiro Rosa, estudante de Engenharia de Controle e Automação">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#0b1020">
+
 </head>
 
 <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
     <header class="site-header">
         <div class="container nav-container">
             <a class="logo" href="#inicio">GM<span>.</span></a>
 
-            <nav aria-label="Navegação principal">
+            <nav id="menu-principal" aria-label="Navegação principal">
                 <a href="#sobre">Sobre</a>
                 <a href="#habilidades">Habilidades</a>
                 <a href="#projetos">Projetos</a>
-                <a href="#experiencia">Experiência e Formação</a>
+                <a href="#experiencia">Experiência</a>
+                <a href="#formacao">Formação</a>
                 <a href="#contato">Contato</a>
             </nav>
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal"
+                aria-label="Abrir menu"
+                data-label-open="Abrir menu"
+                data-label-close="Fechar menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
         </div>
     </header>
 
-    <main>
+    <main id="conteudo" tabindex="-1">
         <!-- Apresentação principal -->
         <section class="hero section" id="inicio">
             <div id="swarm" class="hero-canvas" aria-hidden="true">
@@ -44,6 +77,10 @@
             </div>
             <div class="container hero-grid">
                 <div class="hero-content">
+                    <a class="status-badge" href="#contato">
+                        <span class="status-dot" aria-hidden="true"></span>
+                        Disponível para estágio
+                    </a>
                     <p class="eyebrow">
                         MACHINE LEARNING • VISÃO COMPUTACIONAL • AUTOMAÇÃO INDUSTRIAL
                     </p>
@@ -90,36 +127,48 @@
 
         <!-- Sobre mim -->
         <section class="section section-alt" id="sobre">
-            <div class="container narrow-container">
-                <p class="eyebrow">QUEM SOU</p>
+            <div class="container about-grid">
+                <div class="about-text">
+                    <p class="eyebrow">QUEM SOU</p>
 
-                <h2>Sobre mim</h2>
+                    <h2>Sobre mim</h2>
 
-                <p class="section-text">
-                    Sou o Gabriel Monteiro, estudante de Engenharia de Controle e 
-                    Automação na UNIFEI. Meus principais interesses são automação 
-                    industrial, controle de processos e machine learning.
-                </p>
+                    <p class="section-text">
+                        Sou o Gabriel Monteiro, estudante de Engenharia de Controle e 
+                        Automação na UNIFEI. Meus principais interesses são automação 
+                        industrial, controle de processos e machine learning.
+                    </p>
 
-                <p class="section-text">
-                    Ao longo do curso, implementei e simulei controladores PID e LQG, além 
-                    de controle preditivo e adaptativo, em MATLAB/Octave e Python. Também 
-                    projetei sistemas SCADA em Elipse E3 e FUXA para um processo de 
-                    separação de peças e para controle de nível. Participo ainda de um 
-                    projeto em parceria com a Clavis Segurança da Informação, em que simulo 
-                    ambientes industriais para testar a segurança cibernética de 
-                    infraestruturas críticas. Em paralelo, estudo inteligência artificial 
-                    e machine learning.
-                </p>
+                    <p class="section-text">
+                        Ao longo do curso, implementei e simulei controladores PID e LQG, além 
+                        de controle preditivo e adaptativo, em MATLAB/Octave e Python. Também 
+                        projetei sistemas SCADA em Elipse E3 e FUXA para um processo de 
+                        separação de peças e para controle de nível. Participo ainda de um 
+                        projeto em parceria com a Clavis Segurança da Informação, em que simulo 
+                        ambientes industriais para testar a segurança cibernética de 
+                        infraestruturas críticas. Em paralelo, estudo inteligência artificial 
+                        e machine learning.
+                    </p>
 
-                <p class="section-text">
-                    Neste portfólio reúno estudos, experimentos e projetos, com os 
-                    problemas abordados, as tecnologias usadas e os resultados obtidos. 
-                    Busco um estágio em que possa aplicar o que aprendi em projetos 
-                    reais e aprender com profissionais de diferentes áreas. Se quiser 
-                    conversar, escreva por e-mail ou LinkedIn.
-                </p>
+                    <p class="section-text">
+                        Neste portfólio reúno estudos, experimentos e projetos, com os 
+                        problemas abordados, as tecnologias usadas e os resultados obtidos. 
+                        Busco um estágio em que possa aplicar o que aprendi em projetos 
+                        reais e aprender com profissionais de diferentes áreas. Se quiser 
+                        conversar, escreva por e-mail ou LinkedIn.
+                    </p>
 
+                </div>
+
+                <figure class="about-photo">
+                    <img
+                        src="assets/gabriel.jpg"
+                        alt="Foto de Gabriel Monteiro Rosa"
+                        width="640"
+                        height="800"
+                        loading="lazy"
+                    >
+                </figure>
             </div>
         </section>
 
@@ -292,7 +341,7 @@
                         href="assets/gabriel-monteiro-rosa-curriculo-pt.pdf"
                         download
                     >
-                        Baixar currículo (PDF)
+                        Ver currículo (PDF)
                     </a>
                 </div>
 
@@ -302,7 +351,7 @@
                 <div class="entry-stack">
                     <!-- Copie este bloco para adicionar mais projetos -->
                     <article class="entry">
-                        <h4>Aluno pesquisador - Cybersecurity and Critical Systems</h4>
+                        <h4>Aluno pesquisador - Cybersecurity and Critical Systems<sup>*</sup></h4>
 
                         <p class="entry-meta">
                             09/2024 - até o momento
@@ -313,6 +362,11 @@
                             <li>Desenvolvimento e implementação de cenários industriais (testbeds) para simulação e validação de estratégias de segurança;</li>
                             <li>Análise de segurança em Controladores Lógicos Programáveis (CLPs) em ambientes de Tecnologia Operacional (TO).</li>
                         </ul>
+
+                         <p class="entry-footnote">
+                            * Projeto desenvolvido em parceria entre a UNIFEI e a Clavis Segurança da Informação.
+                        </p>
+
                     </article>
 
                     <article class="entry">
@@ -407,7 +461,7 @@
                             href="assets/certificados/certificado-ef-set.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Abrir certificado EF SET"
+                            tabindex="-1" aria-hidden="true"
                         ></a>
                     </div>
                 </article>
@@ -443,7 +497,7 @@
                             href="assets/certificados/certificado-cisco-cibersec.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Abrir certificado Cisco"
+                            tabindex="-1" aria-hidden="true"
                         ></a>
                     </div>
                 </article>
@@ -479,7 +533,7 @@
                             href="assets/certificados/certificado-sfc.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Abrir certificado Scrum Fundamentals Certified"
+                            tabindex="-1" aria-hidden="true"
                         ></a>
                     </div>
                 </article>
@@ -515,7 +569,7 @@
                             href="assets/certificados/certificado-elipse-e3.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label="Abrir certificado Elipse E3"
+                            tabindex="-1" aria-hidden="true"
                         ></a>
                     </div>
                 </article>
@@ -630,6 +684,8 @@
     window.addEventListener("scroll", toggleBackToTop, { passive: true });
     toggleBackToTop();
     </script>
+    <script src="site.js" defer></script>
+    <script src="menu.js" defer></script>
 
 </body>
 </html>

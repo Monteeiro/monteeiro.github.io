@@ -76,7 +76,7 @@
                     u_worldWidth: 0,
                     u_worldHeight: 0
                 },
-                undefined,
+                1,
                 reduceMotion ? 0 : CONFIG.speed,   // speed 0 = quadro estático
                 side.frame + (reduceMotion ? 3000 : 0),
                 undefined,
