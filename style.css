@@ -320,6 +320,40 @@ nav a.is-active::after {
     transform: rotate(-45deg);
 }
 
+.lang-switch {
+    display: flex;
+    flex-shrink: 0;
+    gap: 8px;
+}
+
+.lang-switch a {
+    display: block;
+    width: 28px;
+    height: 28px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: 50%;
+    opacity: 0.55;
+    transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.lang-switch a:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+.lang-switch a[aria-current="true"] {
+    opacity: 1;
+    border-color: var(--accent);
+}
+
+.lang-switch img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* ==========================================================================
    Hero (fundo branco com metal líquido nas laterais)
    ========================================================================== */
