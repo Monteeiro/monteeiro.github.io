@@ -213,8 +213,15 @@ main:focus {
     min-height: 72px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 24px;
+}
+
+/* Cabeçalho em largura total: logo no canto esquerdo */
+.site-header .nav-container {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+    padding-inline: 24px;
 }
 
 .logo {
@@ -230,6 +237,7 @@ nav {
     display: flex;
     flex-wrap: wrap;
     gap: 24px;
+    margin-left: auto;
 }
 
 nav a {
@@ -324,6 +332,7 @@ nav a.is-active::after {
     display: flex;
     flex-shrink: 0;
     gap: 8px;
+    margin-left: 14px;
 }
 
 .lang-switch a {
@@ -332,7 +341,7 @@ nav a.is-active::after {
     height: 28px;
     overflow: hidden;
     border: 2px solid transparent;
-    border-radius: 50%;
+    border-radius: 4px;
     opacity: 0.55;
     transition: opacity 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
@@ -983,7 +992,7 @@ nav a.is-active::after {
         align-items: center;
         justify-content: flex-start;
         gap: 12px;
-        padding: 0;
+        padding-block: 0;
     }
 
     .js .menu-toggle {
@@ -1059,9 +1068,14 @@ nav a.is-active::after {
     }
 
     nav {
-        gap: 12px 18px;
+    gap: 12px 18px;
+    margin-left: 0;
     }
 
+    .site-header .nav-container {
+        padding-inline: 16px;
+    }
+    
     .hero h1,
     .project-header h1 {
         font-size: 2.7rem;
