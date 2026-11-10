@@ -332,7 +332,7 @@ nav a.is-active::after {
     display: flex;
     flex-shrink: 0;
     gap: 8px;
-    margin-left: 14px;
+    margin-left: 60px;
 }
 
 .lang-switch a {
