@@ -7,33 +7,176 @@
 
     <meta
         name="description"
-        content="INSIRA O RESUMO DO PROJETO"
+        content="Simulação de uma linha de produção totalmente automática no Factory I/O, programada em CODESYS com SFC e Structured Text: separação por cor, usinagem em CNC, encaixotamento, elevador e paletização."
     >
 
-    <title>INSIRA O NOME DO PROJETO | Gabriel Monteiro Rosa</title>
+    <title>Simulação de separação, usinagem, transporte e armazenamento de peças | Gabriel Monteiro Rosa</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <script>document.documentElement.classList.add("js");</script>
     <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../cards.css">
+    <link rel="icon" type="image/png" href="../assets/favicon.png">
+
+    <link rel="canonical" href="https://monteeiro.github.io/projetos/projeto-1.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://monteeiro.github.io/projetos/projeto-1.html">
+    <link rel="alternate" hreflang="en" href="https://monteeiro.github.io/en/projects/project-1.html">
+    <link rel="alternate" hreflang="x-default" href="https://monteeiro.github.io/projetos/projeto-1.html">
+
+    <!-- Estilos específicos desta página.
+         Quando as outras páginas de projeto usarem o mesmo layout,
+         mova este bloco para o FINAL do style.css. -->
+    <style>
+        /* Cabeçalho com o mesmo gradiente azul animado dos cards
+           (usa a animação mesh-drift definida em cards.css) */
+        .project-header {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+        }
+
+        .project-header::before {
+            content: "";
+            position: absolute;
+            inset: -40%;
+            z-index: -2;
+            pointer-events: none;
+            background:
+                radial-gradient(30% 30% at 35% 35%, rgba(47, 107, 255, 0.34), transparent 70%),
+                radial-gradient(28% 28% at 65% 30%, rgba(120, 169, 255, 0.18), transparent 70%),
+                radial-gradient(32% 32% at 62% 70%, rgba(29, 78, 216, 0.36), transparent 70%),
+                radial-gradient(26% 26% at 30% 68%, rgba(56, 189, 248, 0.14), transparent 70%);
+            animation: mesh-drift 16s ease-in-out infinite alternate;
+        }
+
+        /* Esmaece a base do cabeçalho para a cor da seção seguinte */
+        .project-header::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            pointer-events: none;
+            background: linear-gradient(to bottom, transparent 55%, var(--surface-alt));
+        }
+
+        /* Título longo: fonte menor, linha mais larga e quebra equilibrada,
+           para não ficar com poucas palavras por linha em telas grandes */
+        .project-header h1 {
+            max-width: 1000px;
+            font-size: clamp(2rem, 3.6vw, 3.2rem);
+            line-height: 1.15;
+            text-wrap: balance;
+        }
+
+        .project-header .hero-text {
+            max-width: 760px;
+            color: #cfdbf2;
+        }
+
+        /* Espaço entre a última imagem e o texto seguinte */
+        .media-note {
+            margin-top: 48px;
+        }
+
+        /* Imagens lado a lado */
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            align-items: start;
+            gap: 24px;
+            margin-top: 32px;
+        }
+
+        .media-grid .project-media {
+            margin: 0;
+        }
+
+        /* Imagem menor (ex.: lista de variáveis) */
+        .project-media-compact {
+            max-width: 640px;
+        }
+
+        .project-media-compact img {
+            width: auto;
+            max-width: 100%;
+            max-height: 480px;
+        }
+
+        /* Imagens clicáveis para ampliar */
+        .project-media a {
+            display: block;
+        }
+
+        .project-media a img {
+            transition: border-color 0.2s ease;
+        }
+
+        .project-media a:hover img {
+            border-color: var(--accent);
+        }
+
+        @media (max-width: 700px) {
+            .media-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .project-header::before {
+                animation: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
+
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
     <header class="site-header">
         <div class="container nav-container">
 
             <a class="logo" href="../index.html">GM<span>.</span></a>
 
-            <nav aria-label="Navegação principal">
+            <nav id="menu-principal" aria-label="Navegação principal">
                 <a href="../index.html#sobre">Sobre</a>
                 <a href="../index.html#habilidades">Habilidades</a>
                 <a href="../index.html#projetos">Projetos</a>
-                <a href="../index.html#experiencia">Experiência e Formação</a>
+                <a href="../index.html#experiencia">Experiência</a>
+                <a href="../index.html#formacao">Formação</a>
                 <a href="../index.html#contato">Contato</a>
             </nav>
+
+            <div class="lang-switch" role="group" aria-label="Idioma">
+                <a href="projeto-1.html" lang="pt-BR" hreflang="pt-BR"
+                aria-current="true" title="Português (Brasil)">
+                    <img src="../assets/flags/br.svg" alt="Português (Brasil)" width="28" height="28">
+                </a>
+                <a href="../en/projects/project-1.html" lang="en" hreflang="en" title="English">
+                    <img src="../assets/flags/us.svg" alt="English" width="28" height="28">
+                </a>
+            </div>
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal"
+                aria-label="Abrir menu"
+                data-label-open="Abrir menu"
+                data-label-close="Fechar menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
         </div>
     </header>
 
-    <main>
+    <main id="conteudo" tabindex="-1">
 
         <!-- CABEÇALHO DO PROJETO -->
 
@@ -42,37 +185,31 @@
             <div class="container">
 
                 <a class="text-link back-link" href="../index.html#projetos">
-                    ← INSIRA O TEXTO PARA VOLTAR AOS PROJETOS
+                    ← Voltar aos projetos
                 </a>
 
                 <p class="eyebrow">
-                    INSIRA A CATEGORIA DO PROJETO
+                    AUTOMAÇÃO INDUSTRIAL
                 </p>
 
                 <h1>
-                    INSIRA O NOME DO PROJETO
+                    Simulação de separação, usinagem, transporte e armazenamento de peças
                 </h1>
 
                 <p class="hero-text">
-                    INSIRA UM RESUMO DO PROJETO,
-                    SEU OBJETIVO E SUA PRINCIPAL CONTRIBUIÇÃO.
+                    Linha de produção simulada no Factory I/O e controlada por um
+                    CLP programado no CODESYS. O sistema produz peças, separa a cor
+                    desejada, usina, encaixota, eleva e paletiza, tudo de forma
+                    totalmente automática. Projeto desenvolvido em dupla com
+                    Henrique Xavier Vincentini.
                 </p>
 
                 <div class="tag-list">
-                    <span>INSIRA A TECNOLOGIA 1</span>
-                    <span>INSIRA A TECNOLOGIA 2</span>
-                    <span>INSIRA A TECNOLOGIA 3</span>
-                    <span>INSIRA A TECNOLOGIA 4</span>
+                    <span>CODESYS</span>
+                    <span>Structured Text</span>
+                    <span>SFC</span>
+                    <span>Factory I/O</span>
                 </div>
-
-                <a
-                    class="button"
-                    href="INSIRA A URL DO REPOSITÓRIO"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    INSIRA O TEXTO DO BOTÃO DO REPOSITÓRIO ↗
-                </a>
 
             </div>
 
@@ -84,13 +221,32 @@
 
             <div class="container narrow-container">
 
-                <h2>INSIRA O TÍTULO DA SEÇÃO</h2>
+                <h2>Visão geral</h2>
 
                 <p class="section-text">
-                    INSIRA A CONTEXTUALIZAÇÃO DO PROJETO,
-                    O PROBLEMA QUE MOTIVOU SEU DESENVOLVIMENTO
-                    E SUA RELEVÂNCIA.
+                    O sistema produz peças cruas de diferentes cores e separa as da
+                    cor desejada. Essas peças seguem para um CNC e depois para um
+                    pick &amp; place suspenso, que encaixota cinco peças por vez.
+                    As caixas são levadas por um elevador e, em seguida, paletizadas.
                 </p>
+
+                <p class="section-text">
+                    Todo o processo é automático e dispensa o operador. A única
+                    intervenção prevista é a troca da cor das peças a serem produzidas.
+                </p>
+
+                <p class="section-text">
+                    O cenário reúne os seguintes equipamentos:
+                </p>
+
+                <ul class="entry-list section-text">
+                    <li>Pistões e posicionadores;</li>
+                    <li>Esteiras;</li>
+                    <li>CNC com braço robótico;</li>
+                    <li>Braço pick &amp; place suspenso;</li>
+                    <li>Elevador industrial;</li>
+                    <li>Paletizadora.</li>
+                </ul>
 
             </div>
 
@@ -102,17 +258,64 @@
 
             <div class="container narrow-container">
 
-                <h2>INSIRA O TÍTULO DA SEÇÃO</h2>
+                <h2>Objetivos e metodologia</h2>
 
                 <p class="section-text">
-                    INSIRA OS OBJETIVOS PRINCIPAIS E ESPECÍFICOS.
+                    O objetivo foi simular, de forma completamente automática,
+                    as operações de um ambiente industrial real, integrando
+                    diferentes máquinas em uma única sequência coordenada.
                 </p>
 
-                <h3>INSIRA O SUBTÍTULO DA METODOLOGIA</h3>
+                <h3>Como foi desenvolvido</h3>
 
                 <p class="section-text">
-                    INSIRA AS ETAPAS EXECUTADAS,
-                    AS FERRAMENTAS UTILIZADAS E A METODOLOGIA.
+                    O trabalho foi feito em dupla, seguindo estas etapas:
+                </p>
+
+                <ol class="entry-list section-text">
+                    <li>Levantamento da ideia e definição do processo;</li>
+                    <li>Montagem do cenário no Factory I/O;</li>
+                    <li>Definição de todas as entradas e saídas necessárias;</li>
+                    <li>Esboço de diagramas de funcionamento (máquinas de estados);</li>
+                    <li>Programação em SFC com blocos de Structured Text, em CODESYS;</li>
+                    <li>Integração de todas as partes em um programa principal;</li>
+                    <li>Testes do processo completo e correção das falhas encontradas.</li>
+                </ol>
+
+                <p class="section-text">
+                    Ao todo, o processo trabalha com cerca de 80 variáveis no
+                    Factory I/O, entre sensores, atuadores e variáveis auxiliares,
+                    dos tipos booleano, inteiro e ponto flutuante.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- VÍDEO -->
+
+        <section class="section section-alt">
+
+            <div class="container">
+
+                <h2>Demonstração em vídeo</h2>
+
+                <div class="video-container">
+
+                    <iframe
+                        src="https://www.youtube.com/embed/8Hmgu5GwiT8"
+                        title="Demonstração da simulação de separação, usinagem, transporte e armazenamento de peças"
+                        loading="lazy"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+
+                </div>
+
+                <p class="section-text">
+                    Demonstração do sistema em funcionamento no Factory I/O, com as
+                    etapas do processo executadas de forma sequencial e automática,
+                    da produção das peças à paletização.
                 </p>
 
             </div>
@@ -121,51 +324,111 @@
 
         <!-- IMAGENS -->
 
-        <section class="section section-alt">
-
-            <div class="container">
-
-                <h2>INSIRA O TÍTULO DA GALERIA</h2>
-
-                <figure class="project-media">
-
-                    <img
-                        src="../assets/imagens/projeto-1/INSIRA-O-NOME-DA-IMAGEM.png"
-                        alt="INSIRA A DESCRIÇÃO DA IMAGEM"
-                    >
-
-                    <figcaption>
-                        INSIRA A LEGENDA E O CONTEXTO DA IMAGEM.
-                    </figcaption>
-
-                </figure>
-
-            </div>
-
-        </section>
-
-        <!-- VÍDEO -->
-
         <section class="section">
 
             <div class="container">
 
-                <h2>INSIRA O TÍTULO DA DEMONSTRAÇÃO</h2>
+                <h2>Cenário e programação</h2>
 
-                <div class="video-container">
+                <figure class="project-media">
 
-                    <iframe
-                        src="INSIRA A URL DE INCORPORAÇÃO DO VÍDEO"
-                        title="INSIRA O TÍTULO DO VÍDEO"
-                        loading="lazy"
-                        allowfullscreen
-                    ></iframe>
+                    <img
+                        src="../assets/imagens/projeto-1/cenario-factory-completo.png"
+                        alt="Visão completa do cenário no Factory I/O, com todos os componentes da linha de produção"
+                    >
+
+                    <figcaption>
+                        Visão completa do cenário no Factory I/O, com todos os componentes do processo.
+                    </figcaption>
+
+                </figure>
+
+                <figure class="project-media">
+
+                    <img
+                        src="../assets/imagens/projeto-1/cenario-factory-robos.png"
+                        alt="Close do CNC com braço robótico e do braço pick and place no Factory I/O"
+                    >
+
+                    <figcaption>
+                        Foco no CNC com braço robótico e no pick &amp; place suspenso.
+                    </figcaption>
+
+                </figure>
+
+                <!-- Código lado a lado -->
+                <div class="media-grid">
+
+                    <figure class="project-media">
+
+                        <a
+                            href="../assets/imagens/projeto-1/codesys-sfc.png"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src="../assets/imagens/projeto-1/codesys-sfc.png"
+                                alt="Fragmento do código em SFC no CODESYS referente ao funcionamento da esteira"
+                                loading="lazy"
+                            >
+                        </a>
+
+                        <figcaption>
+                            Fragmento em SFC no CODESYS: funcionamento da esteira.
+                            Clique para ampliar.
+                        </figcaption>
+
+                    </figure>
+
+                    <figure class="project-media">
+
+                        <a
+                            href="../assets/imagens/projeto-1/codesys-st.png"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src="../assets/imagens/projeto-1/codesys-st.png"
+                                alt="Fragmento do código em Structured Text no CODESYS referente ao encaixotamento das peças prontas"
+                                loading="lazy"
+                            >
+                        </a>
+
+                        <figcaption>
+                            Fragmento em Structured Text no CODESYS: encaixotamento
+                            das peças prontas. Clique para ampliar.
+                        </figcaption>
+
+                    </figure>
 
                 </div>
 
-                <p class="section-text">
-                    INSIRA UMA DESCRIÇÃO DO VÍDEO E
-                    DA DEMONSTRAÇÃO APRESENTADA.
+                <!-- Variáveis (menor) -->
+                <figure class="project-media project-media-compact">
+
+                    <a
+                        href="../assets/imagens/projeto-1/codesys-variaveis.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="../assets/imagens/projeto-1/codesys-variaveis.png"
+                            alt="Lista com algumas das variáveis utilizadas no processo, no CODESYS"
+                            loading="lazy"
+                        >
+                    </a>
+
+                    <figcaption>
+                        Algumas das cerca de 80 variáveis usadas no processo.
+                        Clique para ampliar.
+                    </figcaption>
+
+                </figure>
+
+                <p class="section-text media-note">
+                    O código-fonte do projeto não está disponível para download.
+                    Esta página reúne a demonstração em vídeo e as imagens do cenário
+                    e da programação.
                 </p>
 
             </div>
@@ -178,18 +441,21 @@
 
             <div class="container narrow-container">
 
-                <h2>INSIRA O TÍTULO DA SEÇÃO</h2>
+                <h2>Resultados</h2>
 
                 <p class="section-text">
-                    INSIRA OS RESULTADOS OBTIDOS,
-                    AS EVIDÊNCIAS E AS PRINCIPAIS CONCLUSÕES.
+                    A simulação funcionou como planejado. O sistema executa todas as
+                    etapas em sequência, da produção à paletização, e também lida
+                    de forma robusta com imprevistos durante a operação.
                 </p>
 
-                <h3>INSIRA O SUBTÍTULO DAS MELHORIAS FUTURAS</h3>
+                <h3>Limitações e melhorias futuras</h3>
 
                 <p class="section-text">
-                    INSIRA AS LIMITAÇÕES IDENTIFICADAS
-                    E AS POSSÍVEIS CONTINUAÇÕES DO PROJETO.
+                    Apesar do resultado positivo, a simulação roda de forma lenta
+                    e não representa uma produção em larga escala. Como continuação,
+                    pretendo aumentar a quantidade de peças produzidas na simulação
+                    e integrar um sistema SCADA ao processo.
                 </p>
 
             </div>
@@ -203,16 +469,20 @@
         <div class="container">
 
             <a class="text-link back-link" href="../index.html#projetos">
-                ← INSIRA O TEXTO PARA VOLTAR AOS PROJETOS
+                ← Voltar aos projetos
             </a>
 
             <p>
-                INSIRA O TEXTO DO RODAPÉ
+                © <span id="ano">2026</span> Gabriel Monteiro Rosa.
+                Desenvolvido com HTML, CSS e JavaScript.
             </p>
 
         </div>
 
     </footer>
+
+    <script src="../site.js" defer></script>
+    <script src="../menu.js" defer></script>
 
 </body>
 
