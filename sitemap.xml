@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://monteeiro.github.io/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://monteeiro.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monteeiro.github.io/en/"/>
+  </url>
+  <url>
+    <loc>https://monteeiro.github.io/en/</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://monteeiro.github.io/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monteeiro.github.io/en/"/>
+  </url>
+  <url>
+    <loc>https://monteeiro.github.io/projetos/projeto-1.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://monteeiro.github.io/projetos/projeto-1.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monteeiro.github.io/en/projects/project-1.html"/>
+  </url>
+  <url>
+    <loc>https://monteeiro.github.io/en/projects/project-1.html</loc>
+    <lastmod>2026-11-12</lastmod>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://monteeiro.github.io/projetos/projeto-1.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://monteeiro.github.io/en/projects/project-1.html"/>
+  </url>
+</urlset>

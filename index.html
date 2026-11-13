@@ -37,6 +37,33 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="theme-color" content="#0b1020">
 
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Gabriel Monteiro Rosa",
+    "url": "https://monteeiro.github.io/",
+    "image": "https://monteeiro.github.io/assets/gabriel.jpg",
+    "jobTitle": "Estudante de Engenharia de Controle e Automação",
+    "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "Universidade Federal de Itajubá (UNIFEI)"
+    },
+    "knowsAbout": [
+        "Automação industrial",
+        "Sistemas de controle",
+        "Machine Learning",
+        "Visão computacional",
+        "Robótica",
+        "Segurança cibernética industrial"
+    ],
+    "sameAs": [
+        "https://www.linkedin.com/in/gabriel-monteiro-rosa/",
+        "https://github.com/Monteeiro"
+    ]
+    }
+    </script>
+
 </head>
 
 <body>
@@ -255,75 +282,6 @@
                         </a>
                     </article>
 
-                    <article class="project-card">
-                        <div class="project-number">02</div>
-
-                        <p class="project-type">MACHINE LEARNING</p>
-
-                        <h3>NOME</h3>
-
-                        <p>
-                            RESUMO
-                        </p>
-
-                        <div class="tag-list">
-                            <span>TECNOLOGIA 1</span>
-                            <span>TECNOLOGIA 2</span>
-                            <span>TECNOLOGIA 3</span>
-                            <span>TECNOLOGIA 4</span>
-                        </div>
-
-                        <a class="text-link" href="projetos/projeto-2.html">
-                            Ver projeto →
-                        </a>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-number">03</div>
-
-                        <p class="project-type">CONTROLE PREDITIVO</p>
-
-                        <h3>NOME</h3>
-
-                        <p>
-                            RESUMO
-                        </p>
-
-                        <div class="tag-list">
-                            <span>TECNOLOGIA 1</span>
-                            <span>TECNOLOGIA 2</span>
-                            <span>TECNOLOGIA 3</span>
-                            <span>TECNOLOGIA 4</span>
-                        </div>
-
-                        <a class="text-link" href="projetos/projeto-3.html">
-                            Ver projeto →
-                        </a>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-number">04</div>
-
-                        <p class="project-type">PROJETO DE DRONE</p>
-
-                        <h3>NOME</h3>
-
-                        <p>
-                            RESUMO
-                        </p>
-
-                        <div class="tag-list">
-                            <span>TECNOLOGIA 1</span>
-                            <span>TECNOLOGIA 2</span>
-                            <span>TECNOLOGIA 3</span>
-                            <span>TECNOLOGIA 4</span>
-                        </div>
-
-                        <a class="text-link" href="projetos/projeto-4.html">
-                            Ver projeto →
-                        </a>
-                    </article>
-
                 </div>
             </div>
         </section>
@@ -354,7 +312,7 @@
                     <a
                         class="button"
                         href="assets/gabriel-monteiro-rosa-curriculo-pt.pdf"
-                        target="blank"
+                        target="_blank"
                         rel="noopener noreferrer"
                     >
                         Ver currículo (PDF) ↗
@@ -681,25 +639,6 @@
 
     <script src="paper-shaders.js" defer></script>
     <script src="hero-metal.js" defer></script>
-    <script>
-   document.querySelectorAll(".skill-card, .project-card, .entry, .resume-box").forEach((card) => {
-       card.addEventListener("pointermove", (e) => {
-           const rect = card.getBoundingClientRect();
-           card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-           card.style.setProperty("--my", `${e.clientY - rect.top}px`);
-       });
-   });
-   </script>
-   <script>
-    const backToTop = document.querySelector(".back-to-top");
-
-    function toggleBackToTop() {
-        backToTop.classList.toggle("is-visible", window.scrollY > 400);
-    }
-
-    window.addEventListener("scroll", toggleBackToTop, { passive: true });
-    toggleBackToTop();
-    </script>
     <script src="site.js" defer></script>
     <script src="menu.js" defer></script>
 
