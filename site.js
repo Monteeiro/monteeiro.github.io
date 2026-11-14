@@ -3,7 +3,6 @@
 (function () {
     initFooterYear();
     initActiveNav();
-    initCardGlow();
     initBackToTop();
     initLangSwitch();
 
@@ -70,21 +69,6 @@
         window.addEventListener("resize", requestUpdate);
         updateActiveLink();
     }
-
-        /* Brilho dos cards que acompanha o cursor */
-        function initCardGlow() {
-            const cards = document.querySelectorAll(
-                ".skill-card, .project-card, .entry, .resume-box"
-            );
-
-            cards.forEach((card) => {
-                card.addEventListener("pointermove", (e) => {
-                    const rect = card.getBoundingClientRect();
-                    card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
-                    card.style.setProperty("--my", `${e.clientY - rect.top}px`);
-                });
-            });
-        }
 
         /* Botão de voltar ao topo: aparece depois de 400 px de rolagem */
         function initBackToTop() {

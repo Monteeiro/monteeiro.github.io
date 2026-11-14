@@ -45,8 +45,6 @@ This repository holds the source code of my portfolio as a Control and Automatio
 ├── cards.css             # Animated gradient cards
 ├── site.js               # Active menu, card glow, back-to-top, language switch
 ├── menu.js               # Hamburger menu
-├── hero-metal.js         # Liquid metal configuration for the hero
-├── paper-shaders.js      # Paper Shaders library (shader engine)
 └── assets/
     ├── imagens/          # Project images
     ├── certificados/     # Certificate PDFs
@@ -61,7 +59,6 @@ This repository holds the source code of my portfolio as a Control and Automatio
 - **HTML5**: semantic structure and accessible markup
 - **CSS3**: custom properties, responsive layout and animations
 - **JavaScript (vanilla)**: small, dependency-free scripts for interactions
-- **[Paper Shaders](https://github.com/paper-design/shaders)**: Liquid Metal shader used in the hero
 - **Google Fonts**: Space Grotesk, Inter and JetBrains Mono
 - **GitHub Pages**: continuous deployment and hosting
 

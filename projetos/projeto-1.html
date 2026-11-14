@@ -14,7 +14,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <script>document.documentElement.classList.add("js");</script>
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../cards.css">
@@ -77,6 +77,121 @@
         <!-- CABEÇALHO DO PROJETO -->
 
         <section class="section project-header">
+            <svg class="process-art" viewBox="0 0 990 390" aria-hidden="true" focusable="false">
+                <defs>
+                    <marker id="seta-p" viewBox="0 0 8 6" refX="8" refY="3" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M0 0 8 3 0 6Z" style="fill:var(--cyan);stroke:none"/>
+                    </marker>
+                    <pattern id="hachura-p" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                        <path d="M0 0V6"/>
+                    </pattern>
+                </defs>
+
+                <!-- Solo, esteira (em dois trechos, com o CNC no meio) e pernas -->
+                <rect x="30" y="300" width="930" height="10" fill="url(#hachura-p)"/>
+                <rect x="40" y="250" width="315" height="12"/>
+                <rect x="475" y="250" width="224" height="12"/>
+                <path d="M70 262V300M330 262V300M500 262V300M660 262V300"/>
+                <circle cx="46" cy="256" r="5"/><circle cx="693" cy="256" r="5"/>
+
+                <!-- 1 · Produção: funil que solta a peça crua -->
+                <g transform="translate(95 0)">
+                    <path d="M-40 140H40L16 196H-16Z"/>
+                    <rect x="-16" y="196" width="32" height="14"/>
+                    <path d="M0 210V226" stroke-dasharray="3 3"/>
+                    <rect x="-10" y="230" width="20" height="20"/>
+                </g>
+
+                <!-- 2 · Separação: sensor de cor e pistão que retira a peça errada -->
+                <g transform="translate(255 0)">
+                    <rect x="-56" y="150" width="26" height="20"/>
+                    <path d="M-43 170V228" stroke-dasharray="3 3"/>
+                    <rect x="-53" y="230" width="20" height="20" fill="url(#hachura-p)"/>
+                    <rect x="26" y="118" width="28" height="46"/>
+                    <path d="M40 164V206M28 206H52"/>
+                    <rect x="30" y="230" width="20" height="20"/>
+                    <path class="mov" d="M66 170V216" marker-end="url(#seta-p)"/>
+                </g>
+
+                <!-- 3 · Usinagem: gabinete do CNC com ferramenta sobre a peça -->
+                <g transform="translate(415 0)">
+                    <rect x="-60" y="140" width="120" height="110"/>
+                    <rect x="-44" y="156" width="88" height="80"/>
+                    <path d="M0 156V190M-6 190H6L0 204Z"/>
+                    <rect x="-12" y="218" width="24" height="18" fill="url(#hachura-p)"/>
+                    <text class="cnc" x="0" y="247" text-anchor="middle">CNC</text>
+                </g>
+
+                <!-- 4 · Encaixotamento: pórtico pick & place e caixa com 5 peças -->
+                <g transform="translate(575 0)">
+                    <path d="M-62 124V250M62 124V250"/>
+                    <rect x="-72" y="110" width="144" height="14"/>
+                    <rect x="-14" y="124" width="28" height="16"/>
+                    <path d="M0 140V186M-12 186H12M-12 186V200M12 186V200"/>
+                    <rect x="-36" y="210" width="72" height="40"/>
+                    <rect x="-31" y="236" width="10" height="10" fill="url(#hachura-p)"/>
+                    <rect x="-18" y="236" width="10" height="10" fill="url(#hachura-p)"/>
+                    <rect x="-5" y="236" width="10" height="10" fill="url(#hachura-p)"/>
+                    <rect x="8" y="236" width="10" height="10" fill="url(#hachura-p)"/>
+                    <rect x="21" y="236" width="10" height="10" fill="url(#hachura-p)"/>
+                    <path class="mov" d="M-50 100H50" marker-start="url(#seta-p)" marker-end="url(#seta-p)"/>
+                </g>
+
+                <!-- 5 · Elevador: torre, plataforma e curso de subida -->
+                <g transform="translate(735 0)">
+                    <path d="M-36 90V300M36 90V300M-44 90H44"/>
+                    <path d="M0 90V214" stroke-dasharray="3 3"/>
+                    <rect x="-32" y="250" width="64" height="8"/>
+                    <rect x="-24" y="214" width="48" height="36"/>
+                    <path class="mov" d="M58 130V244" marker-start="url(#seta-p)" marker-end="url(#seta-p)"/>
+                    <text class="mov-text" x="66" y="190">Δh</text>
+                </g>
+
+                <!-- 6 · Paletização: braço com a caixa e pilha sobre o palete -->
+                <g transform="translate(895 0)">
+                    <rect x="-62" y="288" width="124" height="8"/>
+                    <rect x="-62" y="296" width="14" height="4"/><rect x="-7" y="296" width="14" height="4"/><rect x="48" y="296" width="14" height="4"/>
+                    <rect x="-58" y="248" width="54" height="40"/><rect x="4" y="248" width="54" height="40"/>
+                    <rect x="-58" y="208" width="54" height="40"/><rect x="4" y="208" width="54" height="40"/>
+                    <rect x="-58" y="168" width="54" height="40"/>
+                    <rect x="4" y="168" width="54" height="40" stroke-dasharray="4 3"/>
+                    <path d="M86 92V300M98 92V300"/>
+                    <rect x="0" y="80" width="100" height="12"/>
+                    <path d="M10 92V108M52 92V108"/>
+                    <rect x="0" y="108" width="62" height="8"/>
+                    <rect x="4" y="116" width="54" height="40"/>
+                    <path class="mov" d="M72 120V196" marker-end="url(#seta-p)"/>
+                </g>
+
+                <!-- Sentido do fluxo: cadeia de cotas no topo -->
+                <g class="dim">
+                    <path d="M95 44V56M255 44V56M415 44V56M575 44V56M735 44V56M895 44V56"/>
+                    <path d="M95 50H255M255 50H415M415 50H575M575 50H735M735 50H895" marker-end="url(#seta-p)"/>
+                    <text class="pt" x="95" y="34">FLUXO DO PROCESSO</text>
+                    <text class="en" x="95" y="34">PROCESS FLOW</text>
+
+                    <!-- balões numerados -->
+                    <path d="M95 310V324M255 310V324M415 310V324M575 310V324M735 310V324M895 310V324"/>
+                    <circle cx="95" cy="336" r="12"/><circle cx="255" cy="336" r="12"/><circle cx="415" cy="336" r="12"/>
+                    <circle cx="575" cy="336" r="12"/><circle cx="735" cy="336" r="12"/><circle cx="895" cy="336" r="12"/>
+                    <text class="num" x="95" y="340" text-anchor="middle">1</text>
+                    <text class="num" x="255" y="340" text-anchor="middle">2</text>
+                    <text class="num" x="415" y="340" text-anchor="middle">3</text>
+                    <text class="num" x="575" y="340" text-anchor="middle">4</text>
+                    <text class="num" x="735" y="340" text-anchor="middle">5</text>
+                    <text class="num" x="895" y="340" text-anchor="middle">6</text>
+                </g>
+
+                <!-- Nomes das estações (PT / EN) -->
+                <g class="names" text-anchor="middle">
+                    <text class="pt" x="95" y="372">PRODUÇÃO</text><text class="en" x="95" y="372">PRODUCTION</text>
+                    <text class="pt" x="255" y="372">SEPARAÇÃO</text><text class="en" x="255" y="372">SORTING</text>
+                    <text class="pt" x="415" y="372">USINAGEM</text><text class="en" x="415" y="372">MACHINING</text>
+                    <text class="pt" x="575" y="372">ENCAIXOTAMENTO</text><text class="en" x="575" y="372">BOXING</text>
+                    <text class="pt" x="735" y="372">ELEVADOR</text><text class="en" x="735" y="372">LIFT</text>
+                    <text class="pt" x="895" y="372">PALETIZAÇÃO</text><text class="en" x="895" y="372">PALLETIZING</text>
+                </g>
+            </svg>
 
             <div class="container">
 
@@ -368,10 +483,20 @@
                 ← Voltar aos projetos
             </a>
 
-            <p>
-                © <span id="ano">2026</span> Gabriel Monteiro Rosa.
-                Desenvolvido com HTML, CSS e JavaScript.
-            </p>
+            <dl class="title-block">
+                <div class="wide"><dt>Projeto / Model</dt><dd>Simulação de separação, usinagem, transporte e armazenamento de peças</dd></div>
+                <div><dt>Desenhado por</dt><dd>G. Monteiro Rosa</dd></div>
+                <div><dt>Data</dt><dd><span id="ano">2026</span></dd></div>
+                <div><dt>Unidades</dt><dd>px / rem</dd></div>
+                <div><dt>Escala</dt><dd>1:1</dd></div>
+                <div><dt>Rev.</dt><dd>A</dd></div>
+                <div class="symbol" aria-hidden="true">
+                    <svg viewBox="0 0 44 26" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M4 5h16l-3 16H7z"/><circle cx="34" cy="13" r="8"/><circle cx="34" cy="13" r="3.5"/>
+                    </svg>
+                </div>
+            </dl>
+            <p>© Gabriel Monteiro Rosa. Desenvolvido com HTML, CSS e JavaScript.</p>
 
         </div>
 

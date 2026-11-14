@@ -1,198 +1,58 @@
-/* Cards com fundo de gradiente azul animado
-   Cole no FINAL do style.css (ou carregue depois dele com <link>). */
+/* ==========================================================================
+   BLUEPRINT: quadros técnicos (cards)
+   Borda fina, cantos retos, fundo azul escuro e cruzes de registro (+)
+   nos quatro vértices. Carregue depois do style.css.
+   ========================================================================== */
 
 .skill-card,
 .project-card,
 .entry,
 .resume-box {
-    --mx: 50%;
-    --my: 0%;
+    --x: rgba(255, 255, 255, 0.9);   /* cor das cruzes */
 
     position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    background: #0a1430;
-    border-color: rgba(120, 169, 255, 0.20);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.04),
-        0 14px 32px -16px rgba(29, 78, 216, 0.25);
-    transition:
-        border-color 0.25s ease,
-        box-shadow 0.25s ease,
-        transform 0.2s ease;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    transition: border-color 0.2s ease;
 }
 
-/* Gradiente em malha (mesh) + grão, maior que o card e em movimento lento */
+/* Cruzes de registro nos cantos (8 linhas finas desenhadas com gradientes) */
 .skill-card::before,
 .project-card::before,
 .entry::before,
 .resume-box::before {
+    --c: linear-gradient(var(--x), var(--x));
+
     content: "";
     position: absolute;
-    inset: -40%;
-    z-index: -2;
+    inset: -6px;
     pointer-events: none;
     background:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.06'/%3E%3C/svg%3E"),
-        radial-gradient(30% 30% at 35% 35%, rgba(47, 107, 255, 0.34), transparent 70%),
-        radial-gradient(28% 28% at 65% 30%, rgba(120, 169, 255, 0.18), transparent 70%),
-        radial-gradient(32% 32% at 62% 70%, rgba(29, 78, 216, 0.36), transparent 70%),
-        radial-gradient(26% 26% at 30% 68%, rgba(56, 189, 248, 0.14), transparent 70%);
-    animation: mesh-drift 16s ease-in-out infinite alternate;
-}
-
-@keyframes mesh-drift {
-    from {
-        transform: translate3d(-4%, -3%, 0) rotate(0deg) scale(1);
-    }
-    to {
-        transform: translate3d(4%, 3%, 0) rotate(12deg) scale(1.1);
-    }
-}
-
-/* Cada card começa em um ponto diferente da animação */
-.skill-card:nth-child(2)::before,
-.project-card:nth-child(2)::before,
-.entry-stack > .entry:nth-child(2)::before {
-    animation-delay: -5s;
-}
-
-.skill-card:nth-child(3)::before,
-.project-card:nth-child(3)::before,
-.entry-stack > .entry:nth-child(3)::before {
-    animation-delay: -9s;
-    animation-direction: alternate-reverse;
-}
-
-.skill-card:nth-child(4)::before,
-.project-card:nth-child(4)::before,
-.entry-stack > .entry:nth-child(4)::before {
-    animation-delay: -13s;
-}
-
-/* Brilho que acompanha o cursor */
-.skill-card::after,
-.project-card::after,
-.entry::after,
-.resume-box::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    opacity: 0;
-    background: radial-gradient(
-        280px circle at var(--mx) var(--my),
-        rgba(160, 196, 255, 0.09),
-        transparent 65%
-    );
-    transition: opacity 0.3s ease;
-}
-
-.skill-card:hover::after,
-.project-card:hover::after,
-.entry:hover::after,
-.resume-box:hover::after {
-    opacity: 1;
+        var(--c) 0 6px / 13px 1px,
+        var(--c) 6px 0 / 1px 13px,
+        var(--c) 100% 6px / 13px 1px,
+        var(--c) calc(100% - 6px) 0 / 1px 13px,
+        var(--c) 0 calc(100% - 6px) / 13px 1px,
+        var(--c) 6px 100% / 1px 13px,
+        var(--c) 100% calc(100% - 6px) / 13px 1px,
+        var(--c) calc(100% - 6px) 100% / 1px 13px;
+    background-repeat: no-repeat;
 }
 
 .skill-card:hover,
+.project-card:hover,
 .entry:hover,
 .resume-box:hover {
-    border-color: rgba(120, 169, 255, 0.38);
-    box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.06),
-        0 18px 40px -16px rgba(47, 107, 255, 0.35);
+    --x: var(--cyan);
+    border-color: var(--cyan);
 }
 
-/* Texto mais claro para manter a leitura sobre o gradiente */
-.skill-card p,
-.project-card > p:not(.project-type),
-.project-type,
-.entry-text,
-.entry-list,
-.resume-box p {
-    color: #cfdbf2;
-}
+/* ==========================================================================
+   Imagens de projeto
+   ========================================================================== */
 
-.entry-meta,
-.skill-card h3,
-.entry h4 {
-    color: #ffffff;
-}
+.media-note { margin-top: 48px; }
 
-.entry-meta {
-    color: #9cc2ff;
-}
-
-.tag-list span {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(120, 169, 255, 0.22);
-    color: #dbe6ff;
-}
-
-/* Menos movimento, se o usuário preferir */
-@media (prefers-reduced-motion: reduce) {
-    .skill-card::before,
-    .project-card::before,
-    .entry::before,
-    .resume-box::before {
-        animation: none;
-    }
-}
-
-/* Cabeçalho com o mesmo gradiente azul animado dos cards
-    (usa a animação mesh-drift definida em cards.css) */
-.project-header {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-}
-
-.project-header::before {
-    content: "";
-    position: absolute;
-    inset: -40%;
-    z-index: -2;
-    pointer-events: none;
-    background:
-        radial-gradient(30% 30% at 35% 35%, rgba(47, 107, 255, 0.34), transparent 70%),
-        radial-gradient(28% 28% at 65% 30%, rgba(120, 169, 255, 0.18), transparent 70%),
-        radial-gradient(32% 32% at 62% 70%, rgba(29, 78, 216, 0.36), transparent 70%),
-        radial-gradient(26% 26% at 30% 68%, rgba(56, 189, 248, 0.14), transparent 70%);
-    animation: mesh-drift 16s ease-in-out infinite alternate;
-}
-
-/* Esmaece a base do cabeçalho para a cor da seção seguinte */
-.project-header::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    background: linear-gradient(to bottom, transparent 55%, var(--surface-alt));
-}
-
-/* Título longo: fonte menor, linha mais larga e quebra equilibrada,
-    para não ficar com poucas palavras por linha em telas grandes */
-.project-header h1 {
-    max-width: 1000px;
-    font-size: clamp(2rem, 3.6vw, 3.2rem);
-    line-height: 1.15;
-    text-wrap: balance;
-}
-
-.project-header .hero-text {
-    max-width: 760px;
-    color: #cfdbf2;
-}
-
-/* Espaço entre a última imagem e o texto seguinte */
-.media-note {
-    margin-top: 48px;
-}
-
-/* Imagens lado a lado */
 .media-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -201,14 +61,9 @@
     margin-top: 32px;
 }
 
-.media-grid .project-media {
-    margin: 0;
-}
+.media-grid .project-media { margin: 0; }
 
-/* Imagem menor (ex.: lista de variáveis) */
-.project-media-compact {
-    max-width: 640px;
-}
+.project-media-compact { max-width: 640px; }
 
 .project-media-compact img {
     width: auto;
@@ -216,27 +71,146 @@
     max-height: 480px;
 }
 
-/* Imagens clicáveis para ampliar */
-.project-media a {
-    display: block;
+.project-media a { display: block; }
+.project-media a img { transition: border-color 0.2s ease; }
+.project-media a:hover img { border-color: var(--cyan); }
+
+/* Título longo nas páginas de projeto */
+.project-header h1 {
+    max-width: 1000px;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1.08;
+    text-wrap: balance;
 }
 
-.project-media a img {
-    transition: border-color 0.2s ease;
-}
-
-.project-media a:hover img {
-    border-color: var(--accent);
-}
+.project-header .hero-text { max-width: 760px; color: var(--ice); }
 
 @media (max-width: 700px) {
-    .media-grid {
-        grid-template-columns: 1fr;
-    }
+    .media-grid { grid-template-columns: 1fr; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .project-header::before {
-        animation: none;
-    }
+/* ==========================================================================
+   BLUEPRINT: ilustrações (hero e foto do "Sobre")
+   ========================================================================== */
+
+/* O hero perdeu o canvas do shader: o conteúdo precisa ficar acima do desenho */
+.hero { overflow: hidden; }
+.hero > .container { position: relative; z-index: 1; }
+
+.hero-art {
+    position: absolute;
+    top: 50%;
+    right: max(24px, 3vw);
+    width: min(56vw, 700px);
+    height: auto;
+    transform: translateY(-50%);
+    color: var(--ice);
+    fill: none;
+    stroke: var(--ice);
+    stroke-width: 1;
+    opacity: 0.6;                 /* mais baixo = desenho mais discreto */
+    pointer-events: none;
+}
+
+.hero-art * { vector-effect: non-scaling-stroke; }
+
+.hero-art text {
+    fill: var(--ice);
+    stroke: none;
+    font: 500 11px var(--font-mono);
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+}
+
+.hero-art .dim { stroke: var(--cyan); }
+.hero-art .dim text,
+.hero-art .dim .dot { fill: var(--cyan); stroke: none; }
+
+/* Linhas de centro: traço-ponto */
+.hero-art .ctr { stroke-dasharray: 12 3 2 3; opacity: 0.55; }
+
+/* Cotas e callouts sobre a foto */
+.photo-callouts {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    fill: none;
+    stroke: var(--cyan);
+    stroke-width: 1;
+    pointer-events: none;
+}
+
+.photo-callouts text {
+    fill: var(--cyan);
+    stroke: none;
+    font: 500 10px var(--font-mono);
+    letter-spacing: 0.06em;
+}
+
+.photo-callouts rect { fill: var(--blue-deep); }
+.photo-callouts .dot { fill: var(--cyan); stroke: none; }
+
+@media (max-width: 850px) {
+    /* Em uma coluna, o desenho vira marca d'água atrás do texto */
+    .hero-art { right: -12vw; width: 96vw; opacity: 0.22; }
+
+    /* A foto encolhe e as cotas 320 x 400 deixariam de ser reais */
+    .photo-callouts { display: none; }
+}
+
+/* ==========================================================================
+   BLUEPRINT: diagrama de fluxo no cabeçalho da página de projeto
+   (mesma posição do braço robótico no hero da home)
+   ========================================================================== */
+
+.project-header { position: relative; overflow: hidden; }
+.project-header > .container { position: relative; z-index: 1; }
+
+.process-art {
+    position: absolute;
+    top: 50%;
+    right: max(24px, 3vw);
+    width: min(46vw, 640px);
+    height: auto;
+    transform: translateY(-50%);
+    color: var(--ice);
+    fill: none;
+    stroke: var(--ice);
+    stroke-width: 1;
+    opacity: 0.6;                 /* mais baixo = desenho mais discreto */
+    pointer-events: none;
+}
+
+.process-art * { vector-effect: non-scaling-stroke; }
+
+/* Fonte maior no viewBox para continuar legível com o desenho reduzido */
+.process-art text {
+    fill: var(--ice);
+    stroke: none;
+    font: 500 15px var(--font-mono);
+    letter-spacing: 0.04em;
+}
+
+.process-art .cnc { font-size: 11px; }
+
+.process-art .dim,
+.process-art .mov { stroke: var(--cyan); }
+
+.process-art .dim text,
+.process-art .mov-text { fill: var(--cyan); }
+
+/* Mostra só os nomes do idioma da página */
+html[lang^="en"] .process-art .pt { display: none; }
+html:not([lang^="en"]) .process-art .en { display: none; }
+
+/* Título e resumo ficam na metade esquerda para não cobrir o desenho */
+@media (min-width: 1000px) {
+    .project-header h1 { max-width: 60%; }
+    .project-header .hero-text { max-width: 55%; }
+}
+
+@media (max-width: 850px) {
+    .process-art { right: -12vw; width: 96vw; opacity: 0.2; }
 }
