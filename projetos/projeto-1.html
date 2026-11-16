@@ -12,10 +12,11 @@
 
     <title>Simulação de separação, usinagem, transporte e armazenamento de peças | Gabriel Monteiro Rosa</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+     <!-- Fontes hospedadas localmente (sem Google Fonts) -->
+    <link rel="preload" href="../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
     <script>document.documentElement.classList.add("js");</script>
+    <link rel="stylesheet" href="../fonts.css">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="../cards.css">
     <link rel="icon" type="image/png" href="../assets/favicon.png">
@@ -24,6 +25,29 @@
     <link rel="alternate" hreflang="pt-BR" href="https://monteeiro.github.io/projetos/projeto-1.html">
     <link rel="alternate" hreflang="en" href="https://monteeiro.github.io/en/projects/project-1.html">
     <link rel="alternate" hreflang="x-default" href="https://monteeiro.github.io/projetos/projeto-1.html">
+
+    <meta name="author" content="Gabriel Monteiro Rosa">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0d4287">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Gabriel Monteiro Rosa">
+    <meta property="og:title" content="Simulação de separação, usinagem, transporte e armazenamento de peças | Gabriel Monteiro Rosa">
+    <meta property="og:description" content="Simulação de uma linha de produção totalmente automática no Factory I/O, programada em CODESYS com SFC e Structured Text: separação por cor, usinagem em CNC, encaixotamento, elevador e paletização.">
+    <meta property="og:url" content="https://monteeiro.github.io/projetos/projeto-1.html">
+    <meta property="og:image" content="https://monteeiro.github.io/assets/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Gabriel Monteiro Rosa, estudante de Engenharia de Controle e Automação">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Simulação de separação, usinagem, transporte e armazenamento de peças | Gabriel Monteiro Rosa">
+    <meta name="twitter:description" content="Simulação de uma linha de produção totalmente automática no Factory I/O, programada em CODESYS com SFC e Structured Text: separação por cor, usinagem em CNC, encaixotamento, elevador e paletização.">
+    <meta name="twitter:image" content="https://monteeiro.github.io/assets/og-image.png">
+    <meta name="twitter:image:alt" content="Gabriel Monteiro Rosa, estudante de Engenharia de Controle e Automação">
 
 </head>
 
@@ -483,19 +507,21 @@
                 ← Voltar aos projetos
             </a>
 
-            <dl class="title-block">
-                <div class="wide"><dt>Projeto / Modelo</dt><dd>Simulação de separação, usinagem, transporte e armazenamento de peças</dd></div>
-                <div><dt>Desenhado por</dt><dd>G. Monteiro Rosa</dd></div>
-                <div><dt>Data</dt><dd><span id="ano">2026</span></dd></div>
-                <div><dt>Unidades</dt><dd>px / rem</dd></div>
-                <div><dt>Escala</dt><dd>1:1</dd></div>
-                <div><dt>Rev.</dt><dd>A</dd></div>
+            <div class="title-block">
+                <dl>
+                    <div class="wide"><dt>Projeto / Modelo</dt><dd>Portfólio · v2</dd></div>
+                    <div><dt>Desenhado por</dt><dd>G. Monteiro Rosa</dd></div>
+                    <div><dt>Data</dt><dd><span id="ano">2026</span></dd></div>
+                    <div><dt>Unidades</dt><dd>px / rem</dd></div>
+                    <div><dt>Escala</dt><dd>1:1</dd></div>
+                    <div><dt>Rev.</dt><dd>A</dd></div>
+                </dl>
                 <div class="symbol" aria-hidden="true">
                     <svg viewBox="0 0 44 26" fill="none" stroke="currentColor" stroke-width="1">
                         <path d="M4 5h16l-3 16H7z"/><circle cx="34" cy="13" r="8"/><circle cx="34" cy="13" r="3.5"/>
                     </svg>
                 </div>
-            </dl>
+            </div>
             <p>© Gabriel Monteiro Rosa. Desenvolvido com HTML, CSS e JavaScript.</p>
 
         </div>

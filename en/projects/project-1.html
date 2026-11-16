@@ -12,10 +12,11 @@
 
     <title>Simulation of Part Sorting, Machining, Transport and Storage | Gabriel Monteiro Rosa</title>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Self-hosted fonts (no Google Fonts) -->
+    <link rel="preload" href="../../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../../assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
     <script>document.documentElement.classList.add("js");</script>
+    <link rel="stylesheet" href="../../fonts.css">
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../../cards.css">
     <link rel="icon" type="image/png" href="../../assets/favicon.png">
@@ -24,6 +25,29 @@
     <link rel="alternate" hreflang="pt-BR" href="https://monteeiro.github.io/projetos/projeto-1.html">
     <link rel="alternate" hreflang="en" href="https://monteeiro.github.io/en/projects/project-1.html">
     <link rel="alternate" hreflang="x-default" href="https://monteeiro.github.io/projetos/projeto-1.html">
+
+    <meta name="author" content="Gabriel Monteiro Rosa">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0d4287">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Gabriel Monteiro Rosa">
+    <meta property="og:title" content="Simulation of Part Sorting, Machining, Transport and Storage | Gabriel Monteiro Rosa">
+    <meta property="og:description" content="Fully automatic production line simulated in Factory I/O and programmed in CODESYS with SFC and Structured Text: color sorting, CNC machining, boxing, lift and palletizing.">
+    <meta property="og:url" content="https://monteeiro.github.io/en/projects/project-1.html">
+    <meta property="og:image" content="https://monteeiro.github.io/assets/og-image.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Gabriel Monteiro Rosa, Control and Automation Engineering student">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="pt_BR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Simulation of Part Sorting, Machining, Transport and Storage | Gabriel Monteiro Rosa">
+    <meta name="twitter:description" content="Fully automatic production line simulated in Factory I/O and programmed in CODESYS with SFC and Structured Text: color sorting, CNC machining, boxing, lift and palletizing.">
+    <meta name="twitter:image" content="https://monteeiro.github.io/assets/og-image.png">
+    <meta name="twitter:image:alt" content="Gabriel Monteiro Rosa, Control and Automation Engineering student">
 
 </head>
 
@@ -313,10 +337,11 @@
                 <div class="video-container">
 
                     <iframe
-                        src="https://www.youtube.com/embed/8Hmgu5GwiT8"
-                        title="Demonstration of the simulation of part sorting, machining, transport and storage"
+                        src="https://www.youtube-nocookie.com/embed/8Hmgu5GwiT8"
+                        title="Demonstração da simulação de separação, usinagem, transporte e armazenamento de peças"
                         loading="lazy"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen
                     ></iframe>
 
@@ -482,19 +507,21 @@
                 ← Back to projects
             </a>
 
-            <dl class="title-block">
-                <div class="wide"><dt>Project / Model</dt><dd>Simulation of Part Sorting, Machining, Transport and Storage</dd></div>
-                <div><dt>Drawn by</dt><dd>G. Monteiro Rosa</dd></div>
-                <div><dt>Date</dt><dd><span id="ano">2026</span></dd></div>
-                <div><dt>Units</dt><dd>px / rem</dd></div>
-                <div><dt>Scale</dt><dd>1:1</dd></div>
-                <div><dt>Rev.</dt><dd>A</dd></div>
+            <div class="title-block">
+                <dl>
+                    <div class="wide"><dt>Project / Model</dt><dd>Simulation of Part Sorting, Machining, Transport and Storage</dd></div>
+                    <div><dt>Drawn by</dt><dd>G. Monteiro Rosa</dd></div>
+                    <div><dt>Date</dt><dd><span id="ano">2026</span></dd></div>
+                    <div><dt>Units</dt><dd>px / rem</dd></div>
+                    <div><dt>Scale</dt><dd>1:1</dd></div>
+                    <div><dt>Rev.</dt><dd>A</dd></div>
+                </dl>
                 <div class="symbol" aria-hidden="true">
                     <svg viewBox="0 0 44 26" fill="none" stroke="currentColor" stroke-width="1">
                         <path d="M4 5h16l-3 16H7z"/><circle cx="34" cy="13" r="8"/><circle cx="34" cy="13" r="3.5"/>
                     </svg>
                 </div>
-            </dl>
+            </div>
             <p>© Gabriel Monteiro Rosa. Built with HTML, CSS and JavaScript.</p>
 
         </div>

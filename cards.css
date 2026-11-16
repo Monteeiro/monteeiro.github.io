@@ -205,12 +205,14 @@
 html[lang^="en"] .process-art .pt { display: none; }
 html:not([lang^="en"]) .process-art .en { display: none; }
 
-/* Título e resumo ficam na metade esquerda para não cobrir o desenho */
-@media (min-width: 1000px) {
-    .project-header h1 { max-width: 60%; }
-    .project-header .hero-text { max-width: 55%; }
+/* Título e resumo ficam na metade esquerda para não cobrir o desenho
+   (só nas páginas que têm o desenho) */
+@media (min-width: 1001px) {
+    .project-header:has(.process-art) h1 { max-width: 60%; }
+    .project-header:has(.process-art) .hero-text { max-width: 55%; }
 }
 
-@media (max-width: 850px) {
+/* Até 1000 px o desenho vira marca d'água atrás do texto */
+@media (max-width: 1000px) {
     .process-art { right: -12vw; width: 96vw; opacity: 0.2; }
 }
