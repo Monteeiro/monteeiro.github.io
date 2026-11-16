@@ -21,14 +21,32 @@ This repository holds the source code of my portfolio as a Control and Automatio
 
 ## ✨ Features
 
-- **Bilingual:** Portuguese (default) and English, with `hreflang` tags and a language switch that keeps the reader in the same section and scroll position.
-- **Responsive layout:** CSS Grid and Flexbox, with a hamburger menu on small screens.
-- **Accessibility:** skip link, semantic landmarks, `aria-*` attributes, visible keyboard focus, `prefers-reduced-motion` support and a fallback when JavaScript is disabled.
-- **Visual effects:** liquid metal shader in the hero (WebGL2) and animated blue gradient cards that follow the cursor.
-- **Navigation aids:** active section highlight in the menu and a back-to-top button.
-- **Project pages:** each project has its own page with overview, methodology, images, embedded video, results and future work.
-- **Certificates:** PDF previews embedded next to each certificate entry.
-- **SEO and sharing:** canonical URLs, Open Graph and Twitter Card metadata.
+### Design
+- **Blueprint look:** cyanotype blue canvas with a millimetre-paper grid, thin white lines, square corners, no shadows and a double sheet frame around the page.
+- **Technical drawings in SVG:** a dimensioned 2R robotic arm in the hero, dimension lines on the "About" photo and a numbered process-flow diagram in the header of the project page. They are plain inline SVG, so they stay sharp and need no extra requests.
+- **Blueprint cards:** skills, projects, entries and the resume box use thin borders with registration crosses (+) at the corners, drawn only with CSS gradients.
+- **Title block footer:** a drawing-style stamp (project, author, date, scale, revision) at the bottom of every page.
+- **Self-hosted fonts:** Barlow Condensed, IBM Plex Sans and IBM Plex Mono as `woff2` (Latin subset) loaded from `fonts.css`, with preload for the two most critical files. No Google Fonts requests.
+
+### Behavior
+- **Bilingual:** Portuguese (default) and English, with `hreflang` tags and a language switch (flags) that keeps the reader in the same section and scroll position, using `sessionStorage` for a few seconds.
+- **Responsive layout:** CSS Grid and Flexbox, with a hamburger menu on small screens. The menu only becomes a hamburger when JavaScript is available (`.js` class on `<html>`), so the links stay visible without it.
+- **Navigation aids:** active section highlight in the menu (`aria-current="location"`) and a back-to-top button.
+- **Project pages:** overview, objectives and methodology, embedded video, image gallery with click-to-enlarge, results and future work.
+- **Certificates:** PDF previews embedded next to each certificate entry (hidden on small screens).
+- **Publications:** paper entry with DOI link and, in the English version, a note that the paper is in Portuguese.
+- **Availability badge:** "Available for an internship" link to the contact section in the hero.
+
+### Accessibility
+- Skip link, semantic landmarks, `aria-*` attributes and visible keyboard focus.
+- `prefers-reduced-motion` support (smooth scroll, menu underline and badge blink are disabled).
+- Fallback when JavaScript is disabled.
+
+### SEO and sharing
+- Canonical URLs and `hreflang` alternates (`pt-BR`, `en`, `x-default`) on every page.
+- Open Graph and Twitter Card metadata, with a 1200×630 preview image.
+- `schema.org` `Person` structured data (JSON-LD) on both home pages.
+- `sitemap.xml` with the alternate language of each URL, and `robots.txt` pointing to it.
 
 ---
 
@@ -41,15 +59,19 @@ This repository holds the source code of my portfolio as a Control and Automatio
 │   ├── index.html        # English home page
 │   └── projects/         # English project pages
 ├── projetos/             # Portuguese project pages
-├── style.css             # Base styles, layout and responsive rules
-├── cards.css             # Animated gradient cards
-├── site.js               # Active menu, card glow, back-to-top, language switch
+├── style.css             # Design tokens, base styles, layout, components and responsive rules
+├── cards.css             # Blueprint cards, project media and SVG drawings (loaded after style.css)
+├── fonts.css             # @font-face rules for the self-hosted fonts
+├── site.js               # Footer year, active menu, back-to-top, language switch
 ├── menu.js               # Hamburger menu
+├── sitemap.xml
+├── robots.txt
 └── assets/
-    ├── imagens/          # Project images
+    ├── fonts/            # woff2 files (Barlow Condensed, IBM Plex Sans, IBM Plex Mono)
+    ├── imagens/          # Project images (one folder per project)
     ├── certificados/     # Certificate PDFs
     ├── flags/            # Language switch icons
-    └── ...               # Photo, favicon, social preview image, resume PDFs
+    └── ...               # Photo, favicon, social preview image, resume PDFs (PT and EN)
 ```
 
 ---
@@ -57,33 +79,11 @@ This repository holds the source code of my portfolio as a Control and Automatio
 ## 🛠️ Built with
 
 - **HTML5**: semantic structure and accessible markup
-- **CSS3**: custom properties, responsive layout and animations
+- **CSS3**: custom properties, Grid, Flexbox, `:has()` and CSS-only graphics (grid paper, registration crosses)
+- **Inline SVG**: technical drawings and process diagram
 - **JavaScript (vanilla)**: small, dependency-free scripts for interactions
-- **Google Fonts**: Space Grotesk, Inter and JetBrains Mono
+- **Self-hosted fonts**: Barlow Condensed, IBM Plex Sans and IBM Plex Mono
 - **GitHub Pages**: continuous deployment and hosting
-
----
-
-## 🚀 Running locally
-
-No installation is needed. Clone the repository and serve the folder with any static server, for example:
-
-```bash
-git clone https://github.com/Monteeiro/monteeiro.github.io.git
-cd monteeiro.github.io
-python -m http.server 8000
-```
-
-Then open `http://localhost:8000`. A local server is recommended over opening `index.html` directly, because the PDF previews and the language switch behave better over HTTP.
-
----
-
-## ➕ Adding a new project
-
-1. Duplicate `projetos/projeto-1.html` and `en/projects/project-1.html`.
-2. Replace the texts, images and video link.
-3. Update the matching card in both `index.html` files.
-4. Add the new URLs to `sitemap.xml`.
 
 ---
 
