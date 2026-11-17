@@ -89,10 +89,18 @@
         const OFFSET = 120; // mesma linha de referência do menu ativo
 
         // Correspondência entre os IDs das seções de cada idioma
-        const PT_TO_EN = { inicio:"home", sobre:"about", habilidades:"skills",
-            projetos:"projects", experiencia:"experience", formacao:"education", contato:"contact" };
-        const EN_TO_PT = { home:"inicio", about:"sobre", skills:"habilidades",
-            projects:"projetos", experience:"experiencia", education:"formacao", contact:"contato" };
+        const PT_TO_EN = {
+            inicio: "home", sobre: "about", habilidades: "skills",
+            projetos: "projects", experiencia: "experience", formacao: "education", contato: "contact",
+            "visao-geral": "overview", metodologia: "methodology", video: "video",
+            cenario: "scene", resultados: "results"
+        };
+        const EN_TO_PT = {
+            home: "inicio", about: "sobre", skills: "habilidades",
+            projects: "projetos", experience: "experiencia", education: "formacao", contact: "contato",
+            overview: "visao-geral", methodology: "metodologia", video: "video",
+            scene: "cenario", results: "resultados"
+        };
 
         const sections = Array.from(document.querySelectorAll("main section[id]"));
         const links = document.querySelectorAll(".lang-switch a");

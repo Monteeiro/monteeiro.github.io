@@ -15,6 +15,7 @@
 
     function setOpen(open) {
         menu.classList.toggle("is-open", open);
+        menu.inert = !desktop.matches && !open;
         toggle.setAttribute("aria-expanded", String(open));
         toggle.setAttribute(
             "aria-label",
@@ -22,6 +23,7 @@
         );
     }
 
+    setOpen(false);
     toggle.addEventListener("click", () => setOpen(!isOpen()));
 
     // Fecha ao escolher um item do menu
@@ -43,7 +45,7 @@
     });
 
     // Fecha ao girar o celular ou aumentar a janela
-    desktop.addEventListener("change", (e) => {
-        if (e.matches) setOpen(false);
+    desktop.addEventListener("change", () => {
+        setOpen(false);
     });
 })();
