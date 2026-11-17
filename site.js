@@ -70,108 +70,107 @@
         updateActiveLink();
     }
 
-        /* Botão de voltar ao topo: aparece depois de 400 px de rolagem */
-        function initBackToTop() {
-            const button = document.querySelector(".back-to-top");
-            if (!button) return;
+    /* Botão de voltar ao topo: aparece depois de 400 px de rolagem */
+    function initBackToTop() {
+        const button = document.querySelector(".back-to-top");
+        if (!button) return;
 
-            function update() {
-                button.classList.toggle("is-visible", window.scrollY > 400);
-            }
-
-            window.addEventListener("scroll", update, { passive: true });
-            update();
+        function update() {
+            button.classList.toggle("is-visible", window.scrollY > 400);
         }
 
-        /* Ao trocar de idioma, abre a outra página na mesma seção e na mesma altura */
-        function initLangSwitch() {
-            const KEY = "lang-scroll";
-            const OFFSET = 120; // mesma linha de referência do menu ativo
+        window.addEventListener("scroll", update, { passive: true });
+        update();
+    }
 
-            // Correspondência entre os IDs das seções de cada idioma
-            const PT_TO_EN = { inicio:"home", sobre:"about", habilidades:"skills",
-                projetos:"projects", experiencia:"experience", formacao:"education", contato:"contact" };
-            const EN_TO_PT = { home:"inicio", about:"sobre", skills:"habilidades",
-                projects:"projetos", experience:"experiencia", education:"formacao", contact:"contato" };
+    /* Ao trocar de idioma, abre a outra página na mesma seção e na mesma altura */
+    function initLangSwitch() {
+        const KEY = "lang-scroll";
+        const OFFSET = 120; // mesma linha de referência do menu ativo
 
-            const sections = Array.from(document.querySelectorAll("main section[id]"));
-            const links = document.querySelectorAll(".lang-switch a");
-            if (!sections.length) return;
+        // Correspondência entre os IDs das seções de cada idioma
+        const PT_TO_EN = { inicio:"home", sobre:"about", habilidades:"skills",
+            projetos:"projects", experiencia:"experience", formacao:"education", contato:"contact" };
+        const EN_TO_PT = { home:"inicio", about:"sobre", skills:"habilidades",
+            projects:"projetos", experience:"experiencia", education:"formacao", contact:"contato" };
 
-            const map = document.documentElement.lang.startsWith("pt") ? PT_TO_EN : EN_TO_PT;
+        const sections = Array.from(document.querySelectorAll("main section[id]"));
+        const links = document.querySelectorAll(".lang-switch a");
+        if (!sections.length) return;
 
-            restore();
+        const map = document.documentElement.lang.startsWith("pt") ? PT_TO_EN : EN_TO_PT;
 
-            links.forEach((link) => {
-                link.addEventListener("click", () => {
-                    // Clicar na bandeira do idioma atual não precisa guardar nada
-                    if (link.getAttribute("aria-current") === "true") return;
-                    save();
-                });
+        restore();
+
+        links.forEach((link) => {
+            link.addEventListener("click", () => {
+                // Clicar na bandeira do idioma atual não precisa guardar nada
+                if (link.getAttribute("aria-current") === "true") return;
+                save();
             });
+        });
 
-            function save() {
-                const atBottom =
-                    window.innerHeight + window.scrollY >=
-                    document.documentElement.scrollHeight - 4;
+        function save() {
+            const atBottom =
+                window.innerHeight + window.scrollY >=
+                document.documentElement.scrollHeight - 4;
 
-                let current = sections[0];
-                for (const section of sections) {
-                    if (section.getBoundingClientRect().top <= OFFSET) current = section;
-                }
-                if (atBottom) current = sections[sections.length - 1];
+            let current = sections[0];
+            for (const section of sections) {
+                if (section.getBoundingClientRect().top <= OFFSET) current = section;
+            }
+            if (atBottom) current = sections[sections.length - 1];
 
-                const target = map[current.id];
-                if (!target) return;
+            const target = map[current.id];
+            if (!target) return;
 
-                // Em "projetos" não há equivalente exato, então abre no topo da seção de destino
-                const depth =
-                    current.id === "projetos"
-                        ? 0
-                        : Math.max(0, OFFSET - current.getBoundingClientRect().top);
+            const depth =
+                current.id === "projetos"
+                    ? 0
+                    : Math.max(0, OFFSET - current.getBoundingClientRect().top);
 
-                try {
-                    sessionStorage.setItem(
-                        KEY,
-                        JSON.stringify({ target, depth, bottom: atBottom, time: Date.now() })
-                    );
-                } catch (e) {}
+            try {
+                sessionStorage.setItem(
+                    KEY,
+                    JSON.stringify({ target, depth, bottom: atBottom, time: Date.now() })
+                );
+            } catch (e) {}
+        }
+
+        function restore() {
+            let data = null;
+
+            try {
+                data = JSON.parse(sessionStorage.getItem(KEY));
+                sessionStorage.removeItem(KEY);
+            } catch (e) {
+                return;
             }
 
-            function restore() {
-                let data = null;
+            // Ignora dados antigos (por exemplo, de um clique que foi cancelado)
+            if (!data || Date.now() - data.time > 10000) return;
 
-                try {
-                    data = JSON.parse(sessionStorage.getItem(KEY));
-                    sessionStorage.removeItem(KEY);
-                } catch (e) {
+            function apply() {
+                if (data.bottom) {
+                    window.scrollTo({
+                        top: document.documentElement.scrollHeight,
+                        behavior: "instant"
+                    });
                     return;
                 }
 
-                // Ignora dados antigos (por exemplo, de um clique que foi cancelado)
-                if (!data || Date.now() - data.time > 10000) return;
+                const section = document.getElementById(data.target);
+                if (!section) return;
 
-                function apply() {
-                    if (data.bottom) {
-                        window.scrollTo({
-                            top: document.documentElement.scrollHeight,
-                            behavior: "instant"
-                        });
-                        return;
-                    }
-
-                    const section = document.getElementById(data.target);
-                    if (!section) return;
-
-                    const depth = Math.min(data.depth, section.offsetHeight);
-                    const top = section.getBoundingClientRect().top + window.scrollY + depth - OFFSET;
-                    window.scrollTo({ top: Math.max(0, top), behavior: "instant" });
-                }
-
-                apply();
-                // Repete depois do carregamento completo, quando fontes e imagens podem mudar a altura
-                window.addEventListener("load", apply, { once: true });
+                const depth = Math.min(data.depth, section.offsetHeight);
+                const top = section.getBoundingClientRect().top + window.scrollY + depth - OFFSET;
+                window.scrollTo({ top: Math.max(0, top), behavior: "instant" });
             }
+
+            apply();
+            // Repete depois do carregamento completo, quando fontes e imagens podem mudar a altura
+            window.addEventListener("load", apply, { once: true });
         }
+    }
 
 })();
