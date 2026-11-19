@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#0d4287">
+
+    <title>404 — Página não encontrada | Gabriel Monteiro Rosa</title>
+
+    <link rel="preload" href="/assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <script>
+        document.documentElement.classList.add("js");
+        if (window.location.pathname.startsWith("/en/") || window.location.pathname === "/en") {
+            document.documentElement.lang = "en";
+            document.title = "404 — Page not found | Gabriel Monteiro Rosa";
+        }
+    </script>
+    <link rel="stylesheet" href="/fonts.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/cards.css">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <style>
+        html[lang^="en"] .pt { display: none !important; }
+        html:not([lang^="en"]) .en { display: none !important; }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link pt" href="#conteudo">Pular para o conteúdo</a>
+    <a class="skip-link en" href="#conteudo">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container nav-container">
+            <a class="logo pt" href="/">GM<span>.</span></a>
+            <a class="logo en" href="/en/">GM<span>.</span></a>
+
+            <nav id="menu-principal" aria-label="Navegação principal">
+                <a class="pt" href="/#sobre">Sobre</a>
+                <a class="pt" href="/#habilidades">Habilidades</a>
+                <a class="pt" href="/#projetos">Projetos</a>
+                <a class="pt" href="/#experiencia">Experiência</a>
+                <a class="pt" href="/#formacao">Formação</a>
+                <a class="pt" href="/#contato">Contato</a>
+
+                <a class="en" href="/en/#about">About</a>
+                <a class="en" href="/en/#skills">Skills</a>
+                <a class="en" href="/en/#projects">Projects</a>
+                <a class="en" href="/en/#experience">Experience</a>
+                <a class="en" href="/en/#education">Education</a>
+                <a class="en" href="/en/#contact">Contact</a>
+            </nav>
+
+            <div class="lang-switch" role="group" aria-label="Idioma / Language">
+                <a href="/" lang="pt-BR" hreflang="pt-BR" data-set-lang="pt-BR" aria-current="true" title="Português (Brasil)">
+                    <img src="/assets/flags/br.svg" alt="Português (Brasil)" width="28" height="28">
+                </a>
+                <a href="/en/" lang="en" hreflang="en" data-set-lang="en" title="English">
+                    <img src="/assets/flags/eng.svg" alt="English" width="28" height="28">
+                </a>
+            </div>
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal"
+                aria-label="Abrir menu"
+                data-label-open="Abrir menu"
+                data-label-close="Fechar menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <main id="conteudo" tabindex="-1">
+        <section class="hero section">
+            <svg class="hero-art" viewBox="0 0 680 540" aria-hidden="true" focusable="false">
+                <defs>
+                    <marker id="seta-404" viewBox="0 0 8 6" refX="8" refY="3" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M0 0 8 3 0 6Z" style="fill:var(--cyan);stroke:none"/>
+                    </marker>
+                    <pattern id="hachura-404" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                        <path d="M0 0V8"/>
+                    </pattern>
+                </defs>
+
+                <!-- Moldura de folha interrompida / detalhe fora de escala -->
+                <rect x="140" y="120" width="420" height="280" stroke-dasharray="10 6"/>
+                <rect x="140" y="400" width="420" height="14" fill="url(#hachura-404)"/>
+
+                <!-- Eixos de centro -->
+                <g class="ctr">
+                    <path d="M110 260H590M350 90V430"/>
+                </g>
+
+                <!-- Circuito/elo aberto no centro -->
+                <path d="M180 260H290"/>
+                <path d="M410 260H520"/>
+                <path d="M290 260 395 205"/>
+                <circle cx="290" cy="260" r="8" fill="var(--blue)"/>
+                <circle cx="410" cy="260" r="8" fill="var(--blue)"/>
+
+                <!-- Cotas técnicas e callouts -->
+                <g class="dim">
+                    <path d="M140 96V72M560 96V72"/>
+                    <path d="M140 80H560" marker-start="url(#seta-404)" marker-end="url(#seta-404)"/>
+                    <text x="350" y="73" text-anchor="middle">ERR · 404</text>
+
+                    <path d="M290 280V336M410 280V336"/>
+                    <path d="M290 328H410" marker-start="url(#seta-404)" marker-end="url(#seta-404)"/>
+                    <text x="350" y="321" text-anchor="middle">ΔX · NULL</text>
+
+                    <circle class="dot" cx="410" cy="260" r="2.5"/>
+                    <path d="M410 260 455 215H530"/>
+                    <text x="460" y="208">REF. N/A</text>
+                </g>
+            </svg>
+
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <p class="eyebrow pt">ERRO 404 • COORDENADA INEXISTENTE</p>
+                    <p class="eyebrow en">ERROR 404 • COORDINATE NOT FOUND</p>
+
+                    <h1 class="pt">Planta não encontrada</h1>
+                    <h1 class="en">Blueprint not found</h1>
+
+                    <p class="hero-text pt">
+                        O endereço solicitado não corresponde a nenhuma página ou
+                        projeto deste portfólio. Verifique o link digitado ou volte
+                        para a página principal.
+                    </p>
+                    <p class="hero-text en">
+                        The requested address does not match any page or project in
+                        this portfolio. Check the URL or return to the main page.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="button pt" href="/">Voltar ao início</a>
+                        <a class="button button-secondary pt" href="/#projetos">Ver projetos</a>
+
+                        <a class="button en" href="/en/">Back to home</a>
+                        <a class="button button-secondary en" href="/en/#projects">View projects</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="title-block">
+                <dl>
+                    <div class="wide">
+                        <dt class="pt">Projeto / Modelo</dt>
+                        <dt class="en">Project / Model</dt>
+                        <dd>Portfólio · 404</dd>
+                    </div>
+                    <div>
+                        <dt class="pt">Desenhado por</dt>
+                        <dt class="en">Drawn by</dt>
+                        <dd>G. Monteiro Rosa</dd>
+                    </div>
+                    <div>
+                        <dt class="pt">Data</dt>
+                        <dt class="en">Date</dt>
+                        <dd><span id="ano">2026</span></dd>
+                    </div>
+                    <div>
+                        <dt class="pt">Unidades</dt>
+                        <dt class="en">Units</dt>
+                        <dd>px / rem</dd>
+                    </div>
+                    <div>
+                        <dt class="pt">Escala</dt>
+                        <dt class="en">Scale</dt>
+                        <dd>N/A</dd>
+                    </div>
+                    <div>
+                        <dt>Status</dt>
+                        <dd>404</dd>
+                    </div>
+                </dl>
+                <div class="symbol" aria-hidden="true">
+                    <svg viewBox="0 0 44 26" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M4 5h16l-3 16H7z"/><circle cx="34" cy="13" r="8"/><circle cx="34" cy="13" r="3.5"/>
+                    </svg>
+                </div>
+            </div>
+            <p class="pt">© Gabriel Monteiro Rosa. Desenvolvido com HTML, CSS e JavaScript.</p>
+            <p class="en">© Gabriel Monteiro Rosa. Built with HTML, CSS and JavaScript.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const links = document.querySelectorAll(".lang-switch a[data-set-lang]");
+            function syncLangUI(lang) {
+                const isEn = lang.startsWith("en");
+                document.documentElement.lang = isEn ? "en" : "pt-BR";
+                document.title = isEn
+                    ? "404 — Page not found | Gabriel Monteiro Rosa"
+                    : "404 — Página não encontrada | Gabriel Monteiro Rosa";
+                links.forEach((a) => {
+                    if ((a.dataset.setLang === "en") === isEn) {
+                        a.setAttribute("aria-current", "true");
+                    } else {
+                        a.removeAttribute("aria-current");
+                    }
+                });
+            }
+            syncLangUI(document.documentElement.lang);
+            links.forEach((a) => {
+                a.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    syncLangUI(a.dataset.setLang);
+                });
+            });
+        })();
+    </script>
+    <script src="/site.js" defer></script>
+    <script src="/menu.js" defer></script>
+</body>
+</html>

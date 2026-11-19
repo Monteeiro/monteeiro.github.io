@@ -5,6 +5,7 @@
     initActiveNav();
     initBackToTop();
     initLangSwitch();
+    initCopyEmail();
 
     /* Ano do rodapé sempre atual */
     function initFooterYear() {
@@ -179,6 +180,32 @@
             // Repete depois do carregamento completo, quando fontes e imagens podem mudar a altura
             window.addEventListener("load", apply, { once: true });
         }
+    }
+
+    /* Botão para copiar o endereço de e-mail para a área de transferência */
+    function initCopyEmail() {
+        const buttons = document.querySelectorAll("[data-copy-email]");
+        if (!buttons.length || !navigator.clipboard) return;
+
+        buttons.forEach((btn) => {
+            let timer = null;
+
+            btn.addEventListener("click", () => {
+                const email = btn.dataset.copyEmail;
+                if (!email) return;
+
+                navigator.clipboard.writeText(email).then(() => {
+                    btn.textContent = btn.dataset.labelCopied || email;
+                    btn.classList.add("is-copied");
+
+                    clearTimeout(timer);
+                    timer = setTimeout(() => {
+                        btn.textContent = btn.dataset.labelDefault || "";
+                        btn.classList.remove("is-copied");
+                    }, 2200);
+                }).catch(() => {});
+            });
+        });
     }
 
 })();

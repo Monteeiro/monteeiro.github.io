@@ -154,7 +154,7 @@
 
 @media (max-width: 850px) {
     /* Em uma coluna, o desenho vira marca d'água atrás do texto */
-    .hero-art { right: -12vw; width: 96vw; opacity: 0.22; }
+    .hero-art { right: -12vw; width: 96vw; opacity: 0.13; }
 
     /* A foto encolhe e as cotas 320 x 400 deixariam de ser reais */
     .photo-callouts { display: none; }
@@ -214,5 +214,5 @@ html:not([lang^="en"]) .process-art .en { display: none; }
 
 /* Até 1000 px o desenho vira marca d'água atrás do texto */
 @media (max-width: 1000px) {
-    .process-art { right: -12vw; width: 96vw; opacity: 0.2; }
+    .process-art { right: -12vw; width: 96vw; opacity: 0.13; }
 }
