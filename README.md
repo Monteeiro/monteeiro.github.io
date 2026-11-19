@@ -33,9 +33,10 @@ This repository holds the source code of my portfolio as a Control and Automatio
 - **Responsive layout:** CSS Grid and Flexbox, with a hamburger menu on small screens. The menu only becomes a hamburger when JavaScript is available (`.js` class on `<html>`), so the links stay visible without it.
 - **Navigation aids:** active section highlight in the menu (`aria-current="location"`) and a back-to-top button.
 - **Project pages:** overview, objectives and methodology, embedded video, image gallery with click-to-enlarge, results and future work.
-- **Certificates:** PDF previews embedded next to each certificate entry (hidden on small screens).
+- **Certificates:** lightweight `webp` previews next to each certificate entry linking to the full PDF (hidden on small screens).
 - **Publications:** paper entry with DOI link and, in the English version, a note that the paper is in Portuguese.
-- **Availability badge:** "Available for an internship" link to the contact section in the hero.
+- **Availability badge & quick contact:** "Available for an internship" link to the contact section in the hero, visible email address and a one-click copy-email button.
+- **Custom 404 page:** bilingual blueprint-style error page (`404.html`) with automatic language detection.
 
 ### Accessibility
 - Skip link, semantic landmarks, `aria-*` attributes and visible keyboard focus.
@@ -55,6 +56,7 @@ This repository holds the source code of my portfolio as a Control and Automatio
 ```text
 .
 ├── index.html            # Portuguese home page
+├── 404.html              # Bilingual 404 error page
 ├── en/
 │   ├── index.html        # English home page
 │   └── projects/         # English project pages
@@ -62,14 +64,14 @@ This repository holds the source code of my portfolio as a Control and Automatio
 ├── style.css             # Design tokens, base styles, layout, components and responsive rules
 ├── cards.css             # Blueprint cards, project media and SVG drawings (loaded after style.css)
 ├── fonts.css             # @font-face rules for the self-hosted fonts
-├── site.js               # Footer year, active menu, back-to-top, language switch
+├── site.js               # Footer year, active menu, back-to-top, language switch, copy-email
 ├── menu.js               # Hamburger menu
 ├── sitemap.xml
 ├── robots.txt
 └── assets/
     ├── fonts/            # woff2 files (Barlow Condensed, IBM Plex Sans, IBM Plex Mono)
     ├── imagens/          # Project images (one folder per project)
-    ├── certificados/     # Certificate PDFs
+    ├── certificados/     # Certificate PDFs and WebP previews
     ├── flags/            # Language switch icons
     └── ...               # Photo, favicon, social preview image, resume PDFs (PT and EN)
 ```

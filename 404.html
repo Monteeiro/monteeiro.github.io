@@ -199,12 +199,30 @@
     <script>
         (function () {
             const links = document.querySelectorAll(".lang-switch a[data-set-lang]");
+            const nav = document.getElementById("menu-principal");
+            const toggle = document.querySelector(".menu-toggle");
+
             function syncLangUI(lang) {
                 const isEn = lang.startsWith("en");
                 document.documentElement.lang = isEn ? "en" : "pt-BR";
                 document.title = isEn
                     ? "404 — Page not found | Gabriel Monteiro Rosa"
                     : "404 — Página não encontrada | Gabriel Monteiro Rosa";
+
+                if (nav) {
+                    nav.setAttribute("aria-label", isEn ? "Main navigation" : "Navegação principal");
+                }
+                if (toggle) {
+                    const openLabel = isEn ? "Open menu" : "Abrir menu";
+                    const closeLabel = isEn ? "Close menu" : "Fechar menu";
+                    toggle.dataset.labelOpen = openLabel;
+                    toggle.dataset.labelClose = closeLabel;
+                    toggle.setAttribute(
+                        "aria-label",
+                        toggle.getAttribute("aria-expanded") === "true" ? closeLabel : openLabel
+                    );
+                }
+
                 links.forEach((a) => {
                     if ((a.dataset.setLang === "en") === isEn) {
                         a.setAttribute("aria-current", "true");

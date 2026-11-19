@@ -134,7 +134,7 @@
             if (!target) return;
 
             const depth =
-                current.id === "projetos"
+                current.id === "projetos" || current.id === "projects"
                     ? 0
                     : Math.max(0, OFFSET - current.getBoundingClientRect().top);
 

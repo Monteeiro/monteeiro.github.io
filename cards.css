@@ -149,9 +149,6 @@
     letter-spacing: 0.06em;
 }
 
-.photo-callouts rect { fill: var(--blue-deep); }
-.photo-callouts .dot { fill: var(--cyan); stroke: none; }
-
 @media (max-width: 850px) {
     /* Em uma coluna, o desenho vira marca d'água atrás do texto */
     .hero-art { right: -12vw; width: 96vw; opacity: 0.13; }
