@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="End-to-end Machine Learning pipeline audited against data leakage for credit card fraud detection under extreme class imbalance (0.17% fraud), using SMOTE, Random Forest, PR-AUC and threshold tuning."
+    >
+
+    <title>Credit Card Fraud Detection with Machine Learning | Gabriel Monteiro Rosa</title>
+
+    <!-- Self-hosted fonts (no Google Fonts) -->
+    <link rel="preload" href="../../assets/fonts/ibm-plex-sans-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../../assets/fonts/barlow-condensed-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <script>document.documentElement.classList.add("js");</script>
+    <link rel="stylesheet" href="../../fonts.css">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../../cards.css">
+    <link rel="icon" type="image/png" href="../../assets/favicon.png">
+
+    <link rel="canonical" href="https://monteeiro.github.io/en/projects/project-2.html">
+    <link rel="alternate" hreflang="pt-BR" href="https://monteeiro.github.io/projetos/projeto-2.html">
+    <link rel="alternate" hreflang="en" href="https://monteeiro.github.io/en/projects/project-2.html">
+    <link rel="alternate" hreflang="x-default" href="https://monteeiro.github.io/projetos/projeto-2.html">
+
+    <meta name="author" content="Gabriel Monteiro Rosa">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0d4287">
+
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="Gabriel Monteiro Rosa">
+    <meta property="og:title" content="Credit Card Fraud Detection with Machine Learning | Gabriel Monteiro Rosa">
+    <meta property="og:description" content="End-to-end Machine Learning pipeline audited against data leakage for credit card fraud detection under extreme class imbalance (0.17% fraud), using SMOTE, Random Forest, PR-AUC and threshold tuning.">
+    <meta property="og:url" content="https://monteeiro.github.io/en/projects/project-2.html">
+    <meta property="og:image" content="https://monteeiro.github.io/assets/imagens/projeto-2/06_curvas_roc_pr_baseline.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1905">
+    <meta property="og:image:height" content="883">
+    <meta property="og:image:alt" content="Comparison of ROC and Precision-Recall curves for baseline models in credit card fraud detection">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:locale:alternate" content="pt_BR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Credit Card Fraud Detection with Machine Learning | Gabriel Monteiro Rosa">
+    <meta name="twitter:description" content="End-to-end Machine Learning pipeline audited against data leakage for credit card fraud detection under extreme class imbalance (0.17% fraud), using SMOTE, Random Forest, PR-AUC and threshold tuning.">
+    <meta name="twitter:image" content="https://monteeiro.github.io/assets/imagens/projeto-2/06_curvas_roc_pr_baseline.png">
+    <meta name="twitter:image:alt" content="Comparison of ROC and Precision-Recall curves for baseline models in credit card fraud detection">
+
+</head>
+
+<body>
+
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <header class="site-header">
+        <div class="container nav-container">
+
+            <a class="logo" href="../index.html">GM<span>.</span></a>
+
+            <nav id="menu-principal" aria-label="Main navigation">
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#skills">Skills</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#experience">Experience</a>
+                <a href="../index.html#education">Education</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+
+            <div class="lang-switch" role="group" aria-label="Language">
+                <a href="../../projetos/projeto-2.html" lang="pt-BR" hreflang="pt-BR" title="Português (Brasil)">
+                    <img src="../../assets/flags/br.svg" alt="Português (Brasil)" width="28" height="28">
+                </a>
+                <a href="project-2.html" lang="en" hreflang="en" aria-current="true" title="English">
+                    <img src="../../assets/flags/eng.svg" alt="English" width="28" height="28">
+                </a>
+            </div>
+
+            <button
+                class="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="menu-principal"
+                aria-label="Open menu"
+                data-label-open="Open menu"
+                data-label-close="Close menu"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+        </div>
+    </header>
+
+    <main id="content" tabindex="-1">
+
+        <!-- PROJECT HEADER -->
+
+        <section class="section project-header" id="home">
+            <svg class="process-art" viewBox="0 0 990 390" aria-hidden="true" focusable="false">
+                <defs>
+                    <marker id="seta-p" viewBox="0 0 8 6" refX="8" refY="3" markerWidth="8" markerHeight="6" orient="auto-start-reverse">
+                        <path d="M0 0 8 3 0 6Z" style="fill:var(--cyan);stroke:none"/>
+                    </marker>
+                    <pattern id="hachura-p" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+                        <path d="M0 0V6"/>
+                    </pattern>
+                </defs>
+
+                <!-- Base and pipeline bus -->
+                <rect x="30" y="300" width="930" height="10" fill="url(#hachura-p)"/>
+                <path d="M143 195H203M303 195H363M463 195H523M623 195H683M783 195H843" class="mov" marker-end="url(#seta-p)"/>
+
+                <!-- 1 · Cleaning & Stratified Split (70/15/15 without duplicates) -->
+                <g transform="translate(95 0)">
+                    <rect x="-46" y="120" width="92" height="140"/>
+                    <path d="M-46 154H46M-46 218H46M-46 239H46"/>
+                    <rect x="-46" y="154" width="92" height="64" fill="url(#hachura-p)"/>
+                    <text class="cnc" x="0" y="141" text-anchor="middle">283,726</text>
+                    <text class="cnc" x="0" y="190" text-anchor="middle">70% TRAIN</text>
+                    <text class="cnc" x="0" y="233" text-anchor="middle">15% VAL</text>
+                    <text class="cnc" x="0" y="254" text-anchor="middle">15% TEST</text>
+                    <path d="M0 260V300"/>
+                </g>
+
+                <!-- 2 · Feature Engineering (ColumnTransformer: log1p, sin/cos, z-score) -->
+                <g transform="translate(255 0)">
+                    <rect x="-46" y="120" width="92" height="140"/>
+                    <path d="M-34 176Q-18 140 34 134"/>
+                    <path d="M-34 218C-18 196 -2 240 14 218C22 207 28 210 34 218" stroke-dasharray="3 2"/>
+                    <path d="M-36 184H36M-36 244H36" opacity="0.5"/>
+                    <text class="cnc" x="0" y="160" text-anchor="middle">log1p(x)</text>
+                    <text class="cnc" x="0" y="204" text-anchor="middle">sin / cos</text>
+                    <text class="cnc" x="0" y="255" text-anchor="middle">μ=0 · σ=1</text>
+                    <path d="M0 260V300"/>
+                </g>
+
+                <!-- 3 · Class Balancing (SMOTE 10% on training folds) -->
+                <g transform="translate(415 0)">
+                    <rect x="-46" y="120" width="92" height="140"/>
+                    <!-- majority class -->
+                    <circle cx="-26" cy="146" r="4"/><circle cx="-8" cy="140" r="4"/><circle cx="14" cy="150" r="4"/>
+                    <circle cx="-30" cy="168" r="4"/><circle cx="-12" cy="164" r="4"/>
+                    <!-- minority class + KNN synthetic interpolation -->
+                    <path d="M-18 228L22 184L26 234Z" stroke-dasharray="3 3" class="mov"/>
+                    <rect x="-24" y="222" width="12" height="12" fill="url(#hachura-p)"/>
+                    <rect x="16" y="178" width="12" height="12" fill="url(#hachura-p)"/>
+                    <rect x="20" y="228" width="12" height="12" fill="url(#hachura-p)"/>
+                    <rect x="-2" y="200" width="10" height="10" class="mov"/>
+                    <rect x="4" y="224" width="10" height="10" class="mov"/>
+                    <text class="cnc" x="0" y="254" text-anchor="middle">SMOTE 10%</text>
+                    <path d="M0 260V300"/>
+                </g>
+
+                <!-- 4 · Modeling (Random Forest + RandomizedSearchCV) -->
+                <g transform="translate(575 0)">
+                    <rect x="-46" y="120" width="92" height="140"/>
+                    <circle cx="0" cy="144" r="9" fill="url(#hachura-p)"/>
+                    <path d="M-6 151L-22 176M6 151L22 176"/>
+                    <circle cx="-22" cy="184" r="8"/><circle cx="22" cy="184" r="8"/>
+                    <path d="M-26 191L-34 214M-18 191L-10 214M18 191L10 214M26 191L34 214"/>
+                    <rect x="-39" y="214" width="10" height="10"/>
+                    <rect x="-15" y="214" width="10" height="10" fill="url(#hachura-p)"/>
+                    <rect x="5" y="214" width="10" height="10"/>
+                    <rect x="29" y="214" width="10" height="10" fill="url(#hachura-p)"/>
+                    <text class="cnc" x="0" y="252" text-anchor="middle">RF · CV=3</text>
+                    <path d="M0 260V300"/>
+                </g>
+
+                <!-- 5 · Threshold Calibration (PR-AUC curve and Threshold 0.75) -->
+                <g transform="translate(735 0)">
+                    <rect x="-46" y="120" width="92" height="140"/>
+                    <path d="M-32 138V232H34"/>
+                    <path d="M-32 146H8Q24 146 28 232"/>
+                    <path d="M12 136V232" stroke-dasharray="3 3" class="mov"/>
+                    <circle cx="12" cy="150" r="4" class="mov"/>
+                    <text class="mov-text cnc" x="0" y="252" text-anchor="middle">τ = 0.75</text>
+                    <path d="M0 260V300"/>
+                </g>
+
+                <!-- 6 · Final Test Evaluation (Confusion Matrix) -->
+                <g transform="translate(895 0)">
+                    <rect x="-46" y="120" width="92" height="140"/>
+                    <rect x="-34" y="136" width="32" height="32" fill="url(#hachura-p)"/>
+                    <rect x="2" y="136" width="32" height="32"/>
+                    <rect x="-34" y="172" width="32" height="32"/>
+                    <rect x="2" y="172" width="32" height="32" fill="url(#hachura-p)"/>
+                    <text class="cnc" x="-18" y="156" text-anchor="middle">TN</text>
+                    <text class="cnc" x="18" y="156" text-anchor="middle">FP:4</text>
+                    <text class="cnc" x="-18" y="192" text-anchor="middle">FN</text>
+                    <text class="cnc" x="18" y="192" text-anchor="middle">TP:52</text>
+                    <text class="mov-text cnc" x="0" y="228" text-anchor="middle">P = 92.9%</text>
+                    <text class="cnc" x="0" y="252" text-anchor="middle">F1 = 81.9%</text>
+                    <path d="M0 260V300"/>
+                </g>
+
+                <!-- Flow direction: top dimension chain -->
+                <g class="dim">
+                    <path d="M95 44V56M255 44V56M415 44V56M575 44V56M735 44V56M895 44V56"/>
+                    <path d="M95 50H255M255 50H415M415 50H575M575 50H735M735 50H895" marker-end="url(#seta-p)"/>
+                    <text class="pt" x="95" y="34">FLUXO DO PIPELINE</text>
+                    <text class="en" x="95" y="34">PIPELINE FLOW</text>
+
+                    <!-- numbered balloons -->
+                    <path d="M95 310V324M255 310V324M415 310V324M575 310V324M735 310V324M895 310V324"/>
+                    <circle cx="95" cy="336" r="12"/><circle cx="255" cy="336" r="12"/><circle cx="415" cy="336" r="12"/>
+                    <circle cx="575" cy="336" r="12"/><circle cx="735" cy="336" r="12"/><circle cx="895" cy="336" r="12"/>
+                    <text class="num" x="95" y="340" text-anchor="middle">1</text>
+                    <text class="num" x="255" y="340" text-anchor="middle">2</text>
+                    <text class="num" x="415" y="340" text-anchor="middle">3</text>
+                    <text class="num" x="575" y="340" text-anchor="middle">4</text>
+                    <text class="num" x="735" y="340" text-anchor="middle">5</text>
+                    <text class="num" x="895" y="340" text-anchor="middle">6</text>
+                </g>
+
+                <!-- Stage names (PT / EN) -->
+                <g class="names" text-anchor="middle">
+                    <text class="pt" x="95" y="372">LIMPEZA</text><text class="en" x="95" y="372">CLEANING</text>
+                    <text class="pt" x="255" y="372">ATRIBUTOS</text><text class="en" x="255" y="372">FEATURES</text>
+                    <text class="pt" x="415" y="372">SMOTE</text><text class="en" x="415" y="372">SMOTE</text>
+                    <text class="pt" x="575" y="372">MODELAGEM</text><text class="en" x="575" y="372">MODELING</text>
+                    <text class="pt" x="735" y="372">CALIBRAÇÃO</text><text class="en" x="735" y="372">THRESHOLD</text>
+                    <text class="pt" x="895" y="372">TESTE FINAL</text><text class="en" x="895" y="372">EVALUATION</text>
+                </g>
+            </svg>
+
+            <div class="container">
+
+                <a class="text-link back-link" href="../index.html#projects">
+                    ← Back to projects
+                </a>
+
+                <p class="eyebrow">
+                    MACHINE LEARNING
+                </p>
+
+                <h1>
+                    Credit Card Fraud Detection
+                </h1>
+
+                <p class="hero-text">
+                    End-to-end Machine Learning pipeline audited against data leakage
+                    to detect fraudulent credit card transactions under extreme class
+                    imbalance (0.17% fraud), combining cyclical feature engineering,
+                    SMOTE, PR-AUC hyperparameter optimization and decision threshold
+                    calibration.
+                </p>
+
+                <div class="tag-list">
+                    <span>Python</span>
+                    <span>Scikit-Learn</span>
+                    <span>Imbalanced-Learn</span>
+                    <span>SMOTE</span>
+                    <span>Random Forest</span>
+                    <span>PR-AUC</span>
+                </div>
+
+                <a
+                    class="button"
+                    href="https://github.com/Monteeiro/machine-learning/tree/main/projetos/credit-card-fraud-detection"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View repository on GitHub ↗
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- OVERVIEW -->
+
+        <section class="section section-alt" id="overview">
+
+            <div class="container narrow-container">
+
+                <h2>Overview</h2>
+
+                <p class="section-text">
+                    Financial institutions and payment processors must detect
+                    fraudulent transactions in real time without disrupting legitimate
+                    customers. To address this problem, this project uses the public
+                    Credit Card Fraud Detection dataset (ULB / Kaggle), which contains
+                    real transactions made by European cardholders over a 48-hour
+                    period.
+                </p>
+
+                <p class="section-text">
+                    The dataset provides 28 numerical features obtained via PCA
+                    transformation (V1 through V28, anonymized to protect sensitive
+                    cardholder data), alongside the elapsed time in seconds since the
+                    first transaction (Time), the transaction value (Amount) and the
+                    target label (0 for legitimate and 1 for fraud).
+                </p>
+
+                <p class="section-text">
+                    The problem poses two core technical challenges:
+                </p>
+
+                <ul class="entry-list section-text">
+                    <li>
+                        <strong>Extreme class imbalance:</strong> after data cleaning,
+                        only 473 out of 283,726 unique transactions are fraudulent
+                        (0.17%, or roughly 17 frauds per 10,000 transactions). Raw
+                        accuracy is uninformative here, as a dummy classifier predicting
+                        every transaction as legitimate achieves 99.83% accuracy while
+                        detecting 0% of frauds;
+                    </li>
+                    <li>
+                        <strong>Asymmetric error costs (Precision vs. Recall):</strong> a
+                        false negative (approving a fraudulent transaction) leads to
+                        direct financial loss via chargebacks, whereas a false positive
+                        (blocking a legitimate customer) causes friction, dissatisfaction
+                        and lost revenue.
+                    </li>
+                </ul>
+
+            </div>
+
+        </section>
+
+        <!-- OBJECTIVES AND METHODOLOGY -->
+
+        <section class="section" id="methodology">
+
+            <div class="container narrow-container">
+
+                <h2>Objectives and methodology</h2>
+
+                <p class="section-text">
+                    The objective was to build a reproducible, leakage-free pipeline
+                    that maximizes the area under the Precision-Recall curve (Average
+                    Precision / PR-AUC) and calibrates the classification probability
+                    threshold (Threshold Tuning) to provide clear operational trade-offs.
+                </p>
+
+                <h3>How it was developed</h3>
+
+                <p class="section-text">
+                    The pipeline was built in Python with Scikit-Learn and
+                    Imbalanced-Learn, following six stages:
+                </p>
+
+                <ol class="entry-list section-text">
+                    <li>
+                        <strong>Data cleaning and leakage prevention:</strong> the raw
+                        dataset contains 284,807 rows, of which 1,081 are exact
+                        duplicates (including 19 duplicated fraud records). All duplicates
+                        were removed prior to splitting the dataset so identical copies
+                        could not land in both training and test partitions and
+                        artificially inflate tree-based model performance;
+                    </li>
+                    <li>
+                        <strong>Stratified split (70% / 15% / 15%):</strong> partitioning
+                        into Training (198,608 transactions, 331 frauds), Validation
+                        (42,559 transactions, 71 frauds) and a held-out Test set (42,559
+                        transactions, 71 frauds), preserving the 0.1668% fraud ratio
+                        across all splits;
+                    </li>
+                    <li>
+                        <strong>Exploratory data analysis (EDA):</strong> comparing
+                        transaction values by class revealed that fraudulent transactions
+                        have a higher mean ($123.87 vs. $88.47 for legitimate ones) but a
+                        much lower median ($9.82 vs. $22.00), reflecting the common pattern
+                        of small test micro-transactions prior to larger charges. Temporal
+                        analysis also showed pronounced fraud risk spikes during early
+                        morning hours (1 a.m. to 6 a.m.) and late morning (11 a.m. to
+                        12 p.m.);
+                    </li>
+                    <li>
+                        <strong>Encapsulated feature engineering:</strong> applying a
+                        logarithmic transform log1p(Amount) to stabilize the right-skewed
+                        tail, cyclical trigonometric encoding of the hour of day (sine
+                        and cosine extracted from Time) and z-score standardization via
+                        StandardScaler inside a ColumnTransformer;
+                    </li>
+                    <li>
+                        <strong>Modeling and imbalance handling:</strong> systematic
+                        validation-set comparison across baseline classifiers (Dummy,
+                        Logistic Regression, Decision Tree, Random Forest and
+                        HistGradientBoosting), cost-sensitive class weighting
+                        (class_weight="balanced") and synthetic oversampling via SMOTE
+                        (sampling_strategy=0.10, executed strictly after feature scaling
+                        and only inside training folds);
+                    </li>
+                    <li>
+                        <strong>Hyperparameter tuning and threshold calibration:</strong>
+                        optimizing the pipeline with RandomizedSearchCV using 3-fold
+                        StratifiedKFold (refit="average_precision") and sweeping decision
+                        thresholds from 0.05 to 0.80.
+                    </li>
+                </ol>
+
+                <p class="section-text">
+                    Prioritizing PR-AUC over ROC-AUC was critical: on the validation set,
+                    Logistic Regression achieved a higher ROC-AUC of 0.96 (vs. 0.94 for
+                    Random Forest), yet its PR-AUC was only 0.70 (vs. 0.83 for Random
+                    Forest). Because the False Positive Rate divides false alarms by
+                    42,488 true negatives, ROC curves mask hundreds of false blocks that
+                    Precision-Recall curves expose directly.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- CHARTS AND ANALYSIS -->
+
+        <section class="section section-alt" id="scene">
+
+            <div class="container">
+
+                <h2>Exploratory analysis and modeling</h2>
+
+                <figure class="project-media">
+
+                    <a
+                        href="../../assets/imagens/projeto-2/01_distribuicao_amount_vs_log.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="../../assets/imagens/projeto-2/01_distribuicao_amount_vs_log.png"
+                            alt="Histograms comparing the raw Amount distribution and the log-transformed log1p(Amount) distribution"
+                            width="1781"
+                            height="584"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <figcaption>
+                        Raw transaction value distribution (Amount) with heavy right
+                        skewness and variance stabilization after the log1p(Amount)
+                        transformation. Click to enlarge.
+                    </figcaption>
+
+                </figure>
+
+                <figure class="project-media">
+
+                    <a
+                        href="../../assets/imagens/projeto-2/05_distribuicao_temporal_horas.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="../../assets/imagens/projeto-2/05_distribuicao_temporal_horas.png"
+                            alt="Bar charts comparing total transactions and fraudulent transactions by relative hour of the day (0 to 24h)"
+                            width="1781"
+                            height="584"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <figcaption>
+                        Temporal distribution across the 24-hour cycle: sharp drop in
+                        legitimate purchases overnight contrasted with fraud spikes.
+                        Click to enlarge.
+                    </figcaption>
+
+                </figure>
+
+                <!-- Boxplot and Correlation side by side -->
+                <div class="media-grid">
+
+                    <figure class="project-media">
+
+                        <a
+                            href="../../assets/imagens/projeto-2/02_boxplot_amount_por_classe.png"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src="../../assets/imagens/projeto-2/02_boxplot_amount_por_classe.png"
+                                alt="Boxplot of log1p(Amount) comparing legitimate transactions (class 0) and fraudulent transactions (class 1)"
+                                width="1033"
+                                height="733"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </a>
+
+                        <figcaption>
+                            Boxplot of log1p(Amount) by class: lower median and wider
+                            spread in fraudulent transactions. Click to enlarge.
+                        </figcaption>
+
+                    </figure>
+
+                    <figure class="project-media">
+
+                        <a
+                            href="../../assets/imagens/projeto-2/04_matriz_correlacao.png"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src="../../assets/imagens/projeto-2/04_matriz_correlacao.png"
+                                alt="Correlation matrix heatmap across Time, PCA components V1 to V28, Amount and target Class"
+                                width="1920"
+                                height="1481"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </a>
+
+                        <figcaption>
+                            Correlation matrix: orthogonality across PCA components
+                            (V1–V28) and strongest fraud correlations in V17, V14, V12,
+                            V10 and V11. Click to enlarge.
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+                <figure class="project-media">
+
+                    <a
+                        href="../../assets/imagens/projeto-2/06_curvas_roc_pr_baseline.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="../../assets/imagens/projeto-2/06_curvas_roc_pr_baseline.png"
+                            alt="Comparison plot of ROC and Precision-Recall curves for five baseline models on the validation set"
+                            width="1905"
+                            height="883"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <figcaption>
+                        ROC vs. Precision-Recall curves for baseline models: visual
+                        evidence of how PR-AUC highlights Random Forest's superiority
+                        (AP = 0.83) over Logistic Regression (AP = 0.70). Click to
+                        enlarge.
+                    </figcaption>
+
+                </figure>
+
+                <!-- Threshold tuning side by side -->
+                <div class="media-grid">
+
+                    <figure class="project-media">
+
+                        <a
+                            href="../../assets/imagens/projeto-2/08_threshold_random_forest_corrigido.png"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src="../../assets/imagens/projeto-2/08_threshold_random_forest_corrigido.png"
+                                alt="Precision, Recall and F1-Score curves as a function of the probability threshold for the baseline Random Forest"
+                                width="1335"
+                                height="733"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </a>
+
+                        <figcaption>
+                            Threshold tuning curve for the baseline Random Forest (0.05 to
+                            0.80). Click to enlarge.
+                        </figcaption>
+
+                    </figure>
+
+                    <figure class="project-media">
+
+                        <a
+                            href="../../assets/imagens/projeto-2/09_threshold_random_forest_smote.png"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <img
+                                src="../../assets/imagens/projeto-2/09_threshold_random_forest_smote.png"
+                                alt="Precision, Recall and F1-Score curves as a function of the probability threshold for Random Forest with 10% SMOTE"
+                                width="1335"
+                                height="733"
+                                loading="lazy"
+                                decoding="async"
+                            >
+                        </a>
+
+                        <figcaption>
+                            Threshold tuning for Random Forest with SMOTE (10%): higher
+                            Recall at lower thresholds and strong Precision above 0.60.
+                            Click to enlarge.
+                        </figcaption>
+
+                    </figure>
+
+                </div>
+
+                <figure class="project-media">
+
+                    <a
+                        href="../../assets/imagens/projeto-2/10_matriz_confusao_teste_final.png"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <img
+                            src="../../assets/imagens/projeto-2/10_matriz_confusao_teste_final.png"
+                            alt="Final test set confusion matrices comparing the default 0.50 threshold and the optimized 0.75 threshold"
+                            width="1772"
+                            height="718"
+                            loading="lazy"
+                            decoding="async"
+                        >
+                    </a>
+
+                    <figcaption>
+                        Confusion matrices on the held-out test set (42,559
+                        transactions): comparison between the default threshold (0.50)
+                        and the optimized threshold (0.75). Click to enlarge.
+                    </figcaption>
+
+                </figure>
+
+                <p class="section-text media-note">
+                    Note: The chart labels above are in Portuguese as generated by the
+                    original script. The complete Python source code, documented Jupyter
+                    Notebook and local execution instructions are available in the
+                    <a
+                        class="text-link"
+                        href="https://github.com/Monteeiro/machine-learning/tree/main/projetos/credit-card-fraud-detection"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >project repository on GitHub ↗</a>.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- RESULTS -->
+
+        <section class="section" id="results">
+
+            <div class="container narrow-container">
+
+                <h2>Results</h2>
+
+                <p class="section-text">
+                    Evaluating the winning pipeline (ColumnTransformer + SMOTE + tuned
+                    Random Forest) once on the held-out test set (42,488 legitimate
+                    transactions and 71 frauds) confirmed the gains from threshold
+                    calibration over the default cutoff:
+                </p>
+
+                <ul class="entry-list section-text">
+                    <li>
+                        <strong>Default threshold (0.50):</strong> 82.35% Precision,
+                        78.87% Recall and 80.58% F1-Score (56 of 71 frauds detected,
+                        with 12 false positives);
+                    </li>
+                    <li>
+                        <strong>Optimized threshold (0.75):</strong> 92.86% Precision,
+                        73.24% Recall and 81.89% F1-Score (52 of 71 frauds detected,
+                        cutting false positives down to just 4 out of 42,488 legitimate
+                        purchases — a false-block rate below 0.01%).
+                    </li>
+                </ul>
+
+                <p class="section-text">
+                    Based on this probability calibration, a practical production deployment
+                    can operate in two protection tiers: automatic preventive blocking for
+                    probabilities of 0.75 or higher (92.86% precision, minimizing customer
+                    friction) and step-up authentication (push confirmation via mobile app
+                    or SMS) for intermediate scores between 0.20 and 0.75, capturing over
+                    83% of total frauds without hard-blocking the card upfront.
+                </p>
+
+                <h3>Limitations and future improvements</h3>
+
+                <p class="section-text">
+                    Because features V1 through V28 are anonymized principal components,
+                    it is not possible to engineer domain-specific banking features such
+                    as cardholder transaction velocity, geographic distance or merchant
+                    risk profiles, and the 48-hour window does not capture long-term
+                    concept drift. As future work, I plan to benchmark gradient boosting
+                    libraries (LightGBM and XGBoost), apply probability calibration
+                    (CalibratedClassifierCV) and incorporate an instance-dependent
+                    financial cost matrix weighted by transaction amount.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+
+        <div class="container">
+
+            <a class="text-link back-link" href="../index.html#projects">
+                ← Back to projects
+            </a>
+
+            <div class="title-block">
+                <dl>
+                    <div class="wide"><dt>Project / Model</dt><dd>Portfolio · v2</dd></div>
+                    <div><dt>Drawn by</dt><dd>G. Monteiro Rosa</dd></div>
+                    <div><dt>Date</dt><dd><span id="ano">2026</span></dd></div>
+                    <div><dt>Units</dt><dd>px / rem</dd></div>
+                    <div><dt>Scale</dt><dd>1:1</dd></div>
+                    <div><dt>Rev.</dt><dd>A</dd></div>
+                </dl>
+                <div class="symbol" aria-hidden="true">
+                    <svg viewBox="0 0 44 26" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M4 5h16l-3 16H7z"/><circle cx="34" cy="13" r="8"/><circle cx="34" cy="13" r="3.5"/>
+                    </svg>
+                </div>
+            </div>
+            <p>© Gabriel Monteiro Rosa. Built with HTML, CSS and JavaScript.</p>
+
+        </div>
+
+    </footer>
+
+    <a class="back-to-top" href="#home" aria-label="Back to top">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 19V5"></path>
+            <path d="m5 12 7-7 7 7"></path>
+        </svg>
+    </a>
+
+    <script src="../../site.js" defer></script>
+    <script src="../../menu.js" defer></script>
+
+</body>
+
+</html>
